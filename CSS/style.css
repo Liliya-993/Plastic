@@ -2,6 +2,9 @@
   v2.0-modified | 20110126
   License: none (public domain)
 */
+* {
+    box-sizing: border-box;
+}
 
 html,
 body,
@@ -468,11 +471,6 @@ textarea {
 html {
     box-sizing: border-box;
 }
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
 
 body {
     font-family: "Zen Maru Gothic";
@@ -691,11 +689,6 @@ body {
     margin-bottom: 20px;
 }
 
-.plastic__card-pic {
-    max-width: 10px;
-    margin-bottom: 20px;
-}
-
 .plastic__card-title {
     width: 100%;
     font-weight: 420px;
@@ -711,3 +704,28 @@ body {
 }
 
 /*Plastic styles end*/
+
+.swiper {
+    width: 100%;
+    height: 500px;
+}
+
+.swiper-slide {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.plastic__card-pic {
+    width: 100%;
+}
