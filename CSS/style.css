@@ -711,3 +711,15 @@ body {
 }
 
 /*Plastic styles end*/
+
+.swiper {
+    width: 100%;
+    height: 500px;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
