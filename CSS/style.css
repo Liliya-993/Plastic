@@ -744,3 +744,35 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+
+    /* Позиціонування підказки */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Відступ зверху */
+    left: 50%;
+    margin-left: -70px;
+
+    /* Анімаційний ефект */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
