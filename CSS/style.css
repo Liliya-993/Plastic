@@ -743,6 +743,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .tooltip {
@@ -753,8 +754,8 @@ body {
 
 .tooltip .tooltip-text {
     visibility: hidden;
-    width: 140px;
-    background-color: black;
+    width: 540px;
+    background-color: rgb(33, 62, 36);
     color: #fff;
     text-align: center;
     padding: 5px;
