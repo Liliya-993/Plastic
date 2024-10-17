@@ -766,8 +766,7 @@ body {
     z-index: 1;
     bottom: 125%; /* Відступ зверху */
     left: 50%;
-    margin-left: -70px;
-
+    margin-left: -420px;
     /* Анімаційний ефект */
     opacity: 0;
     transition: opacity 0.3s;
@@ -776,4 +775,28 @@ body {
 .tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+.wrapper-table {
+    max-width: 1000px;
+    margin-left: 200px;
+    margin-bottom: 50px;
+}
+
+table {
+    width: 80%;
+    padding: 30px;
+    font-weight: 220px;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: bold;
+}
+th,
+td {
+    border: 2px solid rgb(33, 62, 36);
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #afd7b2;
 }
