@@ -673,6 +673,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     margin-bottom: 40px;
+    cursor: pointer;
 }
 
 .plastic__card-size {
@@ -764,8 +765,8 @@ body {
     /* Позиціонування підказки */
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Відступ зверху */
-    left: 50%;
+    bottom: 102%; /* Відступ зверху */
+    left: 75%;
     margin-left: -420px;
     /* Анімаційний ефект */
     opacity: 0;
@@ -799,4 +800,8 @@ td {
 }
 th {
     background-color: #afd7b2;
+}
+
+.image-link img {
+    height: auto;
 }
