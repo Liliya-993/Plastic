@@ -541,11 +541,26 @@ body {
     padding-top: 45px;
 }
 
+.header___wrapper2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 45px;
+}
+
 .header___list {
     color: #000;
     display: flex;
     flex-wrap: wrap;
     padding-top: 45px;
+}
+
+.header___list2 {
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 25px;
 }
 
 .header___item {
@@ -579,6 +594,12 @@ body {
     padding-top: 230px;
 }
 
+.intro2 {
+    background: url(../img/intro-bg-2.jpg) no-repeat center;
+    background-size: cover;
+    padding-top: 130px;
+}
+
 .intro___title {
     max-width: 680px;
     font-weight: 500;
@@ -589,6 +610,10 @@ body {
 }
 
 .intro .wrapper {
+    flex-direction: column;
+}
+
+.intro2 .wrapper {
     flex-direction: column;
 }
 
