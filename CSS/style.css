@@ -518,6 +518,14 @@ body {
     margin-bottom: 20px;
 }
 
+.section-title2::after {
+    display: block;
+    content: "";
+    width: 353px;
+    height: 3px;
+    background-color: #51a556;
+}
+
 .section-desc {
     font-size: 18px;
     line-height: 28px;
@@ -598,6 +606,7 @@ body {
     background: url(../img/intro-bg-2.jpg) no-repeat center;
     background-size: cover;
     padding-top: 130px;
+    padding-bottom: 80px;
 }
 
 .intro___title {
@@ -625,6 +634,14 @@ body {
     margin-bottom: 59px;
 }
 
+.intro___subtitle {
+    max-width: 580px;
+    color: white;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 70px;
+}
+
 /*intro style end*/
 
 /*Benefits styles*/
@@ -645,6 +662,16 @@ body {
     margin: 0 auto;
     position: relative;
     transform: translateY(-80px);
+}
+
+.benefits___wrap2 {
+    box-shadow: 0px 2px 20px rgba(21, 24, 36, 0.15993);
+    max-width: 1200px;
+    background-color: #fff;
+    margin: 0 auto;
+    position: relative;
+    transform: translateY(-25px);
+    padding-bottom: 50px;
 }
 
 .benefits___title {
@@ -829,4 +856,8 @@ th {
 
 .image-link img {
     height: auto;
+}
+
+.tab {
+    margin-bottom: 50px;
 }
