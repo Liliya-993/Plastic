@@ -21,3 +21,15 @@ document
         // Перенаправляємо на іншу сторінку
         window.location.href = "Page-tabl.html";
     });
+
+const inputNumber = index.html.getElementById("inputNumber");
+const resultField = index.html.getElementById("resultField");
+
+inputNumber.addEventListener("input", function () {
+    const value = parseFloat(inputNumber.value);
+    if (!isNaN(value)) {
+        resultField.value = (value * 0.0018).toFixed(6); // Округляем до 6 знаков
+    } else {
+        resultField.value = ""; // Очистка поля результата, если введено не число
+    }
+});

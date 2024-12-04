@@ -572,7 +572,7 @@ body {
 }
 
 .header___item {
-    margin-right: 72px;
+    margin-right: 22px;
 }
 
 .header___item:last-child {
@@ -860,4 +860,41 @@ th {
 
 .tab {
     margin-bottom: 50px;
+}
+
+.search-form___info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-form___field {
+    background: transparent url(/img/svg/Search.svg) no-repeat left center;
+    border: 0;
+    height: 100px;
+    width: 500px;
+    margin-top: 20px;
+    margin-right: 40px;
+    padding-left: 107px;
+    font-size: 20px;
+    color: rgb(33, 62, 36);
+}
+
+.search-form___field2 {
+    background: transparent url(/img/svg/Search.svg) no-repeat left center;
+    border: 0;
+    height: 100px;
+    width: 500px;
+    margin-top: 20px;
+    margin-right: 40px;
+    padding-left: 107px;
+    font-size: 20px;
+    color: rgb(33, 62, 36);
+    margin-bottom: 100px;
+}
+
+.search-form___submit {
+    margin-top: 40px;
+    margin-right: 40px;
+    height: 50px;
+    width: 50px;
 }
