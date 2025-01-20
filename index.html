@@ -805,24 +805,33 @@
                             <fieldset class="search-form___wrap">
                                 <p class="search-form___info">
                                     <input
-                                        type="text"
+                                        type="number"
+                                        id="inputValue"
                                         name="user-like-to-do"
                                         class="search-form___field"
-                                        placeholder="1 кришечка"
+                                        placeholder="Введіть число"
                                     />
                                 </p>
 
                                 <p class="search-form___info">
-                                    <!-- Поле для вывода результата -->
+                                    <!-- Поле для виводу результату -->
                                     <label for="resultField"></label>
                                     <input
                                         type="text"
                                         id="resultField"
                                         class="search-form___field2"
                                         readonly
-                                        placeholder="0.0018 кг"
+                                        placeholder="Результат з’явиться тут"
                                     />
                                 </p>
+
+                                <button
+                                    type="button"
+                                    class="search-form___button"
+                                    onclick="calculate()"
+                                >
+                                    Обчислити
+                                </button>
                             </fieldset>
                         </form>
                         <div class="wrapper-table">

@@ -22,14 +22,15 @@ document
         window.location.href = "Page-tabl.html";
     });
 
-const inputNumber = index.html.getElementById("inputNumber");
-const resultField = index.html.getElementById("resultField");
+function calculate() {
+    const constant = 0.0018; // Стале число
+    const inputValue = parseFloat(document.getElementById("inputValue").value);
 
-inputNumber.addEventListener("input", function () {
-    const value = parseFloat(inputNumber.value);
-    if (!isNaN(value)) {
-        resultField.value = (value * 0.0018).toFixed(6); // Округляем до 6 знаков
-    } else {
-        resultField.value = ""; // Очистка поля результата, если введено не число
+    if (isNaN(inputValue)) {
+        document.getElementById("resultField").value = "Некоректне число";
+        return;
     }
-});
+
+    const result = inputValue * constant;
+    document.getElementById("resultField").value = `${result.toFixed(6)} кг`;
+}
