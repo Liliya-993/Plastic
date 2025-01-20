@@ -32,5 +32,7 @@ function calculate() {
     }
 
     const result = inputValue * constant;
-    document.getElementById("resultField").value = `${result.toFixed(6)} кг`;
+  const formattedResult = result.toString();
+
+    document.getElementById('resultField').value = `${formattedResult} кг`;
 }
