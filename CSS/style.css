@@ -609,6 +609,13 @@ body {
     padding-bottom: 80px;
 }
 
+.intro3 {
+    background: url(../img/intro-bg-2.jpg) no-repeat center;
+    background-size: cover;
+    padding-top: 130px;
+    padding-bottom: 80px;
+}
+
 .intro___title {
     max-width: 680px;
     font-weight: 500;
@@ -889,12 +896,12 @@ th {
     font-size: 16px;
     padding: 5px 10px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #51a556;
     color: white;
     border: none;
     border-radius: 5px;
 }
 
 .search-form___button:hover {
-    background-color: #0056b3;
+    background-color: #36793b;
 }
