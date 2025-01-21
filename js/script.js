@@ -21,31 +21,23 @@ document
         // Перенаправляємо на іншу сторінку
         window.location.href = "Page-tabl.html";
     });
+document
+    .getElementById("redirectButton")
+    .addEventListener("click", function () {
+        // Перенаправляємо на іншу сторінку
+        window.location.href = "test.html";
+    });
 
 function calculate() {
     const constant = 0.0018; // Стале число
-<<<<<<< HEAD
-    const inputValue = parseFloat(document.getElementById("inputValue").value);
-
-    if (isNaN(inputValue)) {
-        document.getElementById("resultField").value = "Некоректне число";
-=======
     const inputValue = parseFloat(document.getElementById('inputValue').value);
 
     if (isNaN(inputValue)) {
         document.getElementById('resultField').value = 'Некоректне число';
->>>>>>> c16d0466b8a4ca2db204d90fd346e9d3723c3b35
         return;
     }
 
     const result = inputValue * constant;
-<<<<<<< HEAD
-    document.getElementById("resultField").value = `${result.toFixed(6)} кг`;
-=======
-
-    // Прибираємо зайві нулі
-    const formattedResult = result.toString();
-
+    const formattedResult = result.toString(); // Прибираємо зайві нулі
     document.getElementById('resultField').value = `${formattedResult} кг`;
->>>>>>> c16d0466b8a4ca2db204d90fd346e9d3723c3b35
 }
