@@ -9,6 +9,11 @@
             href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
         />
         <link rel="stylesheet" href="./CSS/style.css" />
+         <style>
+            body {
+                background-color: #afd7b2;
+            }
+        </style>
     </head>
     <body>
         <!-- Header start -->
@@ -57,14 +62,55 @@
             <!-- Intro end -->
 
             <!-- Benefits start -->
-            <section class="benefits">
-                <div class="benefits___wrap2">
-                    <h1 class="benefits___title">Перевір свої знання!</h1>
-                    <div class="benefits___cards">
-                        <div class="benefits___card">
-                            <div class="benefits___card-pic"></div>
-                        </div>
-                    </div>
+             <section class="benefits">
+                <div class="benefits___wrap3">
+                    <h1 class="benefits___title-test">Перевір свої знання!</h1>
+                    <form class="form__test" name="frm">
+                        <fieldset>
+                            <legend>
+                                Скільки років потрібно для розкладання
+                                поліетилену терефталату (PET або ПЕТ)?
+                            </legend>
+                            <input type="radio" name="q1" />450 років
+                            <span id="p1"></span><br />
+                            <input type="radio" name="q1" />100-200 років
+                            <br />
+                            <input type="radio" name="q1" />500-1 000 років
+                            <br />
+                            <input type="radio" name="q1" />50 років
+                            <br />
+                            <p id="v1">&nbsp;</p>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                Який вид пластику розкладається від 100 до 500
+                                років?
+                            </legend>
+                            <input type="radio" name="q2" />Поліетилен
+                            терефталат (PET) <br />
+                            <input type="radio" name="q2" />Поліетилен високої
+                            щільності (PEHD) <span id="p2"></span><br />
+                            <input type="radio" name="q2" />Полівінілхлорид
+                            (PVC) <br />
+                            <input type="radio" name="q2" />Поліетилен низької
+                            щільності (PELD)<br />
+                            <p id="v2">&nbsp;</p>
+                        </fieldset>
+                        <p>
+                            <input
+                                type="button"
+                                onclick="check();"
+                                value="Перевірити"
+                                class="search-form___button"
+                            />
+                            <input
+                                type="reset"
+                                onclick="del();"
+                                value="Очистити"
+                                class="search-form___button"
+                            />
+                        </p>
+                    </form>
                 </div>
             </section>
             <!-- Benefits end -->
