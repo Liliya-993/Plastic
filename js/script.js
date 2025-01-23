@@ -41,3 +41,91 @@ function calculate() {
     const formattedResult = result.toString(); // Прибираємо зайві нулі
     document.getElementById('resultField').value = `${formattedResult} кг`;
 }
+function check() {
+    if (frm.q1[0].checked) {
+        document.getElementById("v1").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v1").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p1").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q2[1].checked) {
+        document.getElementById("v2").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v2").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p2").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q3[2].checked) {
+        document.getElementById("v3").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v3").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p3").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q4[2].checked) {
+        document.getElementById("v4").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v4").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p4").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q5[3].checked) {
+        document.getElementById("v5").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v5").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p5").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q6[3].checked) {
+        document.getElementById("v6").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v6").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p6").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q7[2].checked) {
+        document.getElementById("v7").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v7").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p7").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+}
+
+function del() {
+    document.getElementById("p1").innerHTML = "";
+    document.getElementById("v1").innerHTML = "&nbsp";
+    document.getElementById("p2").innerHTML = "";
+    document.getElementById("v2").innerHTML = "&nbsp";
+    document.getElementById("p3").innerHTML = "";
+    document.getElementById("v3").innerHTML = "&nbsp";
+    document.getElementById("p4").innerHTML = "";
+    document.getElementById("v4").innerHTML = "&nbsp";
+    document.getElementById("p5").innerHTML = "";
+    document.getElementById("v5").innerHTML = "&nbsp";
+    document.getElementById("p6").innerHTML = "";
+    document.getElementById("v6").innerHTML = "&nbsp";
+    document.getElementById("p7").innerHTML = "";
+    document.getElementById("v7").innerHTML = "&nbsp";
+}
