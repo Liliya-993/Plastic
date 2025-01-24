@@ -37,9 +37,9 @@ function calculate() {
         return;
     }
 
-    const result = inputValue * constant;
+    const result = inputValue / constant;
     const formattedResult = result.toString(); // Прибираємо зайві нулі
-    document.getElementById('resultField').value = `${formattedResult} кг`;
+    document.getElementById('resultField').value = `${formattedResult} кришечок`;
 }
 function check() {
     if (frm.q1[0].checked) {
