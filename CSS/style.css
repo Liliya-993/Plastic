@@ -884,7 +884,7 @@ td {
     padding: 10px;
     text-align: left;
 }
-th:hover {
+td:hover {
  background-color: #d9f2da
 }
 
