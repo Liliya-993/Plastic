@@ -38,9 +38,10 @@ function calculate() {
     }
 
     const result = inputValue / constant;
-    const formattedResult = result.toString(); // Прибираємо зайві нулі
-    document.getElementById('resultField').value = `${formattedResult} кришечок`;
+    const roundedResult = Math.round(result); // Округлюємо результат до цілого
+    document.getElementById('resultField').value = `${roundedResult} кришечок`;
 }
+
 function check() {
     if (frm.q1[0].checked) {
         document.getElementById("v1").innerHTML =
