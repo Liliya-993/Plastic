@@ -111,6 +111,46 @@ function check() {
     }
     document.getElementById("p7").innerHTML =
         "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q8[2].checked) {
+        document.getElementById("v8").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v8").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p8").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q9[1].checked) {
+        document.getElementById("v9").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v9").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p9").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q10[3].checked) {
+        document.getElementById("v10").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v10").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p10").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
+
+    if (frm.q11[4].checked) {
+        document.getElementById("v11").innerHTML =
+            "<font color='green'>Правильно</font>";
+    } else {
+        document.getElementById("v11").innerHTML =
+            "<font color='red'>Помилка</font>";
+    }
+    document.getElementById("p11").innerHTML =
+        "<font color='green'>Правильна відповідь</font>";
 }
 
 function del() {
@@ -128,4 +168,12 @@ function del() {
     document.getElementById("v6").innerHTML = "&nbsp";
     document.getElementById("p7").innerHTML = "";
     document.getElementById("v7").innerHTML = "&nbsp";
+    document.getElementById("p8").innerHTML = "";
+    document.getElementById("v8").innerHTML = "&nbsp";
+    document.getElementById("p9").innerHTML = "";
+    document.getElementById("v9").innerHTML = "&nbsp";
+    document.getElementById("p10").innerHTML = "";
+    document.getElementById("v10").innerHTML = "&nbsp";
+    document.getElementById("p11").innerHTML = "";
+    document.getElementById("v11").innerHTML = "&nbsp";
 }
