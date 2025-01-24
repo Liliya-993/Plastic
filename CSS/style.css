@@ -884,6 +884,10 @@ td {
     padding: 10px;
     text-align: left;
 }
+td:hover {
+ background-color: #afd7b2
+}
+
 th {
     background-color: #afd7b2;
 }
