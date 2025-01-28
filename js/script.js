@@ -178,3 +178,8 @@ function del() {
     document.getElementById("p11").innerHTML = "";
     document.getElementById("v11").innerHTML = "&nbsp";
 }
+
+function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
