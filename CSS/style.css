@@ -947,3 +947,15 @@ th {
 .answear-text {
   margin-bottom: 40px
 }
+
+.Up-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.Up-to-top:hover {
+    transform: scale(1.1);
+}
