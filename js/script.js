@@ -17,29 +17,60 @@ const swiper1 = new Swiper(".swiper", {
 
 document
     .getElementById("redirectButton")
-    .addEventListener("click", function () {
+    ?.addEventListener("click", function () {
         // Перенаправляємо на іншу сторінку
         window.location.href = "Page-tabl.html";
     });
+
 document
     .getElementById("redirectButton")
-    .addEventListener("click", function () {
+    ?.addEventListener("click", function () {
         // Перенаправляємо на іншу сторінку
         window.location.href = "test.html";
     });
 
 function calculate() {
     const constant = 0.0018; // Стале число
-    const inputValue = parseFloat(document.getElementById('inputValue').value);
+    const inputValue = parseFloat(document.getElementById("inputValue").value);
 
     if (isNaN(inputValue)) {
-        document.getElementById('resultField').value = 'Некоректне число';
+        document.getElementById("resultField").value = "Некоректне число";
         return;
     }
 
-    const result = inputValue / constant;
-    const roundedResult = Math.round(result); // Округлюємо результат до цілого
-    document.getElementById('resultField').value = `${roundedResult} кришечок`;
+    const result = inputValue * constant;
+    const formattedResult = result.toString(); // Прибираємо зайві нулі
+    document.getElementById("resultField").value = `${formattedResult} кг`;
+}
+
+function calculate() {
+    const constant = 0.0018; // Стале число
+    const inputValue = parseFloat(document.getElementById("inputValue").value);
+
+    if (isNaN(inputValue)) {
+        document.getElementById("resultField").value = "Некоректне число";
+        return;
+    }
+
+    const result = inputValue * constant;
+    const formattedResult = result.toString(); // Прибираємо зайві нулі
+    document.getElementById("resultField").value = `${formattedResult} кг`;
+}
+
+// Функція для зміни поля
+function switchField() {
+    const fieldWrapper = document.querySelector(".search-form___wrap");
+    const oldField = document.getElementById("inputValue");
+    const newField = document.createElement("input");
+
+    // Налаштування нового поля
+    newField.type = "number";
+    newField.id = "inputValue";
+    newField.className = "search-form___field";
+    newField.placeholder = "Введіть нове число (пластик)";
+
+    // Замінюємо старе поле на нове
+    oldField.replaceWith(newField);
 }
 
 function check() {
@@ -183,3 +214,62 @@ function scrollToTop(event) {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    console.log("test2");
+    const firebaseConfig = {
+        apiKey: "AIzaSyAcPRGRG97w5plkfImjUbz7ix2W1579ea4",
+        authDomain: "ecolan-50b3c.firebaseapp.com",
+        projectId: "ecolan-50b3c",
+        storageBucket: "ecolan-50b3c.firebasestorage.app",
+        messagingSenderId: "617217226913",
+        appId: "1:617217226913:web:ded1fda17cf2387d8e18e0",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    console.log("test");
+
+    // Обробка реєстрації користувача
+    document
+        .getElementById("registerForm")
+        ?.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Реєстрація успішна!");
+                    console.log("Користувач:", userCredential.user);
+                })
+                .catch((error) => {
+                    alert("Помилка: " + error.message);
+                });
+        });
+
+    document
+        .getElementById("loginForm")
+        ?.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Вхід успішний!");
+                    console.log(
+                        "Авторизований користувач:",
+                        userCredential.user
+                    );
+                    document.getElementById("loginError").textContent = "";
+                })
+                .catch((error) => {
+                    document.getElementById("loginError").textContent =
+                        "Помилка: " + error.message;
+                });
+        });
+});
