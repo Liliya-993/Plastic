@@ -636,6 +636,19 @@
     </div>
 
     <script>
+         // Application State
+        let isLoggedIn = false;
+        let isEditing = false;
+        let currentUser = {
+            firstName: 'Лілія',
+            lastName: 'Носова',
+            email: 'liliya.nosova@example.com',
+            city: 'Кременчук',
+            phone: '+380501234567',
+            bio: 'Еко-активістка, учениця Кременчуцького наукового ліцею "Політ". Захоплююся веб-розробкою та екологічними проєктами.',
+            joinDate: '2025-01-15'
+        };
+
         // Navigation Functions
         function showLogin() {
             document.getElementById('loginPage').classList.remove('hidden');
