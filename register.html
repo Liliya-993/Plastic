@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизація та профіль</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Auth Pages */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .auth-card.register {
+            max-width: 800px;
+        }
+
+        .auth-header {
+            text-center;
+            margin-bottom: 40px;
+        }
+
+        .auth-avatar {
+            width: 80px;
+            height: 80px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .auth-avatar i {
+            font-size: 40px;
+            color: #059669;
+        }
+
+        .auth-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #059669;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #047857;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .auth-link a {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-link a:hover {
+            color: #047857;
+        }
+
+        /* Profile Page */
+        .profile-container {
+            min-height: 100vh;
+            background: #f9fafb;
+        }
+
+        .profile-header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 0;
+        }
+
+        .profile-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .logout-btn {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .logout-btn:hover {
+            color: #374151;
+        }
+
+        .profile-content {
+            padding: 40px 0;
+        }
+
+        .profile-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .edit-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .edit-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #059669;
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .edit-btn:hover {
+            background: #f0fdf4;
+        }
+
+        .profile-info {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .profile-avatar {
+            flex-shrink: 0;
+        }
+
+        .avatar-circle {
+            width: 96px;
+            height: 96px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .avatar-circle i {
+            font-size: 48px;
+            color: #059669;
+        }
+
+        .change-photo {
+            font-size: 0.75rem;
+            color: #059669;
+            text-decoration: none;
+        }
+
+        .profile-fields {
+            flex: 1;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .field-group {
+            margin-bottom: 24px;
+        }
+
+        .field-label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 4px;
+            font-size: 0.875rem;
+        }
+
+        .field-value {
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .field-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .stat-icon.green { background: #f0fdf4; color: #059669; }
+        .stat-icon.blue { background: #eff6ff; color: #2563eb; }
+        .stat-icon.purple { background: #faf5ff; color: #7c3aed; }
+        .stat-icon.orange { background: #fff7ed; color: #ea580c; }
+        .stat-icon.yellow { background: #fefce8; color: #ca8a04; }
+
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+            gap: 16px;
+        }
+
+        .achievement-item.unlocked {
+            background: #f0fdf4;
+        }
+
+        .achievement-item.locked {
+            background: #f9fafb;
+            opacity: 0.6;
+        }
+
+        .achievement-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .achievement-icon.green { color: #059669; }
+        .achievement-icon.blue { color: #2563eb; }
+        .achievement-icon.gray { color: #9ca3af; }
+
+        .achievement-content h4 {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .achievement-content p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Hidden elements */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-row, .field-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <p class="auth-title">Ваш особистий кабінет</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-envelope"></i> Email адреса
+                </label>
+                <input type="email" id="loginEmail" class="form-input" placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-lock"></i> Пароль
+                </label>
+                <div class="password-field">
+                    <input type="password" id="loginPassword" class="form-input" placeholder="Введіть пароль">
+                    <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="handleLogin()">Увійти</button>
+
+            <div class="auth-link">
+                <p>Ще не маєте акаунту? <a href="#" onclick="showRegister()">Зареєструватися</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="registerPage" class="auth-container hidden">
+        <div class="auth-card register">
+            <div class="auth-header">
+                <div class="auth-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="auth-title">Реєстрація</h1>
+                <p class="auth-subtitle">Приєднуйтесь до спільноти еко-активістів</p>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Ім'я *</label>
+                    <input type="text" id="firstName" class="form-input" placeholder="Ваше ім'я">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Прізвище *</label>
+                    <input type="text" id="lastName" class="form-input" placeholder="Ваше прізвище">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-envelope"></i> Email адреса *
+                </label>
+                <input type="email" id="registerEmail" class="form-input" placeholder="your@email.com">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Місто</label>
+                    <input type="text" id="city" class="form-input" placeholder="Ваше місто">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Телефон</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+380501234567">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-lock"></i> Пароль *
+                    </label>
+                    <div class="password-field">
+                        <input type="password" id="registerPassword" class="form-input" placeholder="Мінімум 6 символів">
+                        <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Підтвердження паролю *</label>
+                    <div class="password-field">
+                        <input type="password" id="confirmPassword" class="form-input" placeholder="Повторіть пароль">
+                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="handleRegister()">Створити акаунт</button>
+
+            <div class="auth-link">
+                <p>Вже маєте акаунт? <a href="#" onclick="showLogin()">Увійти</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="profile-container hidden">
+        <!-- Header -->
+        <div class="profile-header">
+            <div class="container">
+                <div class="profile-header-content">
+                    <h1 class="profile-title">Мій профіль</h1>
+                    <a href="#" class="logout-btn" onclick="handleLogout()">Вийти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="profile-content">
+                <!-- Personal Information -->
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Особиста інформація</h2>
+                        <div class="edit-controls">
+                            <a href="#" id="editBtn" class="edit-btn" onclick="toggleEdit()">
+                                <i class="fas fa-edit"></i> Редагувати
+                            </a>
+                            <a href="#" id="saveBtn" class="edit-btn hidden" onclick="saveProfile()">
+                                <i class="fas fa-save"></i> Зберегти
+                            </a>
+                            <a href="#" id="cancelBtn" class="edit-btn hidden" onclick="cancelEdit()">
+                                <i class="fas fa-times"></i> Скасувати
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <div class="avatar-circle">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <a href="#" id="changePhotoBtn" class="change-photo hidden">Змінити фото</a>
+                        </div>
+
+                        <div class="profile-fields">
+                            <div class="field-row">
+                                <div class="field-group">
+                                    <label class="field-label">Ім'я</label>
+                                    <div id="firstNameView" class="field-value">Лілія</div>
+                                    <input type="text" id="firstNameEdit" class="form-input hidden" value="Лілія">
+                                </div>
+                                <div class="field-group">
+                                    <label class="field-label">Прізвище</label>
+                                    <div id="lastNameView" class="field-value">Носова</div>
+                                    <input type="text" id="lastNameEdit" class="form-input hidden" value="Носова">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label">Email</label>
+                                <div id="emailView" class="field-value">liliya.nosova@example.com</div>
+                                <input type="email" id="emailEdit" class="form-input hidden" value="liliya.nosova@example.com">
+                            </div>
+
+                            <div class="field-row">
+                                <div class="field-group">
+                                    <label class="field-label">Місто</label>
+                                    <div id="cityView" class="field-value">Кременчук</div>
+                                    <input type="text" id="cityEdit" class="form-input hidden" value="Кременчук">
+                                </div>
+                                <div class="field-group">
+                                    <label class="field-label">Телефон</label>
+                                    <div id="phoneView" class="field-value">+380501234567</div>
+                                    <input type="tel" id="phoneEdit" class="form-input hidden" value="+380501234567">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label">Про себе</label>
+                                <div id="bioView" class="field-value">Учениця Кременчуцького наукового ліцею "Політ". Захоплююся веб-розробкою та екологічними проєктами.</div>
+                                <textarea id="bioEdit" class="form-input hidden" rows="3">Учениця Кременчуцького наукового ліцею "Політ". Захоплююся веб-розробкою та екологічними проєктами.</textarea>
+                            </div>
+
+                            <div class="field-group">
+                                <label class="field-label">Дата реєстрації</label>
+                                <div class="field-value field-with-icon">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="joinDate">15 січня 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="profile-section">
+                    <h2 class="section-title">Моя еко-статистика</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon green">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-number">2.45</div>
+                            <div class="stat-label">кг пластику зекономлено</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">подій створено</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">участь у подіях</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">днів активності</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon yellow">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-number">847</div>
+                            <div class="stat-label">еко-балів</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        let isLoggedIn = false;
+        let isEditing = false;
+        let currentUser = {
+            firstName: 'Лілія',
+            lastName: 'Носова',
+            email: 'liliya.nosova@example.com',
+            city: 'Кременчук',
+            phone: '+380501234567',
+            bio: 'Еко-активістка, учениця Кременчуцького наукового ліцею "Політ". Захоплююся веб-розробкою та екологічними проєктами.',
+            joinDate: '2025-01-15'
+        };
+
+        // Navigation Functions
+        function showLogin() {
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('registerPage').classList.add('hidden');
+            document.getElementById('profilePage').classList.add('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('registerPage').classList.remove('hidden');  
+            document.getElementById('profilePage').classList.add('hidden');
+        }
+
+        function showProfile() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('registerPage').classList.add('hidden');
+            document.getElementById('profilePage').classList.remove('hidden');
+            loadProfile();
+        }
+
+        // Authentication Functions
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Будь ласка, заповніть всі поля');
+                return;
+            }
+
+            isLoggedIn = true;
+            showProfile();
+        }
+
+        function handleRegister() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const city = document.getElementById('city').value;
+            const phone = document.getElementById('phone').value;
+
+            if (!firstName || !lastName || !email || !password) {
+                alert('Будь ласка, заповніть обов\'язкові поля');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Паролі не співпадають');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Пароль повинен містити мінімум 6 символів');
+                return;
+            }
+
+            // Update user data
+            currentUser = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                city: city,
+                phone: phone,
+                bio: '',
+                joinDate: new Date().toISOString().split('T')[0]
+            };
+
+            isLoggedIn = true;
+            showProfile();
+        }
+
+        function handleLogout() {
+            isLoggedIn = false;
+            isEditing = false;
+            showLogin();
+            
+            // Clear forms
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        // Profile Functions
+        function loadProfile() {
+            document.getElementById('firstNameView').textContent = currentUser.firstName;
+            document.getElementById('lastNameView').textContent = currentUser.lastName;
+            document.getElementById('emailView').textContent = currentUser.email;
+            document.getElementById('cityView').textContent = currentUser.city;
+            document.getElementById('phoneView').textContent = currentUser.phone;
+            document.getElementById('bioView').textContent = currentUser.bio || 'Не вказано';
+            
+            const joinDate = new Date(currentUser.joinDate).toLocaleDateString('uk-UA');
+            document.getElementById('joinDate').textContent = joinDate;
+        }
+
+        function toggleEdit() {
+            isEditing = !isEditing;
+            
+            if (isEditing) {
+                // Show edit controls
+                document.getElementById('editBtn').classList.add('hidden');
+                document.getElementById('saveBtn').classList.remove('hidden');
+                document.getElementById('cancelBtn').classList.remove('hidden');
+                document.getElementById('changePhotoBtn').classList.remove('hidden');
+                
+                // Show edit fields, hide view fields
+                const viewElements = ['firstNameView', 'lastNameView', 'emailView', 'cityView', 'phoneView', 'bioView'];
+                const editElements = ['firstNameEdit', 'lastNameEdit', 'emailEdit', 'cityEdit', 'phoneEdit', 'bioEdit'];
+                
+                viewElements.forEach(id => document.getElementById(id).classList.add('hidden'));
+                editElements.forEach(id => document.getElementById(id).classList.remove('hidden'));
+                
+                // Load current values into edit fields
+                document.getElementById('firstNameEdit').value = currentUser.firstName;
+                document.getElementById('lastNameEdit').value = currentUser.lastName;
+                document.getElementById('emailEdit').value = currentUser.email;
+                document.getElementById('cityEdit').value = currentUser.city;
+                document.getElementById('phoneEdit').value = currentUser.phone;
+                document.getElementById('bioEdit').value = currentUser.bio;
+            }
+        }
+
+        function saveProfile() {
+            // Get values from edit fields
+            currentUser.firstName = document.getElementById('firstNameEdit').value;
+            currentUser.lastName = document.getElementById('lastNameEdit').value;
+            currentUser.email = document.getElementById('emailEdit').value;
+            currentUser.city = document.getElementById('cityEdit').value;
+            currentUser.phone = document.getElementById('phoneEdit').value;
+            currentUser.bio = document.getElementById('bioEdit').value;
+            
+            // Update view fields
+            loadProfile();
+            
+            // Exit edit mode
+            cancelEdit();
+        }
+
+        function cancelEdit() {
+            isEditing = false;
+            
+            // Show view controls
+            document.getElementById('editBtn').classList.remove('hidden');
+            document.getElementById('saveBtn').classList.add('hidden');
+            document.getElementById('cancelBtn').classList.add('hidden');
+            document.getElementById('changePhotoBtn').classList.add('hidden');
+            
+            // Show view fields, hide edit fields
+            const viewElements = ['firstNameView', 'lastNameView', 'emailView', 'cityView', 'phoneView', 'bioView'];
+            const editElements = ['firstNameEdit', 'lastNameEdit', 'emailEdit', 'cityEdit', 'phoneEdit', 'bioEdit'];
+            
+            viewElements.forEach(id => document.getElementById(id).classList.remove('hidden'));
+            editElements.forEach(id => document.getElementById(id).classList.add('hidden'));
+        }
+
+        // Utility Functions
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            showLogin();
+        });
+    </script>
