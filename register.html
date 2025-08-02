@@ -692,71 +692,65 @@
 
         // Authentication Functions
         function handleLogin() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
 
-    if (!email || !password) {
-        alert('Будь ласка, заповніть всі поля');
-        return;
-    }
+  if (!email || !password) {
+    alert('Будь ласка, заповніть всі поля');
+    return;
+  }
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then(async (userCredential) => {
-            const user = userCredential.user;
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                currentUser = docSnap.data();
-                isLoggedIn = true;
-                showProfile();
-            } else {
-                alert('Профіль не знайдено в базі');
-            }
-        })
-        .catch((error) => {
-            alert('Помилка при вході: ' + error.message);
-        });
+  signInWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        currentUser = docSnap.data();
+        isLoggedIn = true;
+        showProfile();
+      } else {
+        alert('Профіль не знайдено');
+      }
+    })
+    .catch((error) => alert('Помилка при вході: ' + error.message));
 }
-
+        
         function handleRegister() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const city = document.getElementById('city').value;
-            const phone = document.getElementById('phone').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const email = document.getElementById('registerEmail').value;
+  const password = document.getElementById('registerPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const city = document.getElementById('city').value;
+  const phone = document.getElementById('phone').value;
 
-            if (!firstName || !lastName || !email || !password) {
-                alert('Будь ласка, заповніть обов\'язкові поля');
-                return;
-            }
+  if (!firstName || !lastName || !email || !password) {
+    alert('Будь ласка, заповніть обов\'язкові поля');
+    return;
+  }
+  if (password !== confirmPassword) {
+    alert('Паролі не співпадають');
+    return;
+  }
+  if (password.length < 6) {
+    alert('Пароль повинен містити мінімум 6 символів');
+    return;
+  }
 
-            if (password !== confirmPassword) {
-                alert('Паролі не співпадають');
-                return;
-            }
-
-            if (password.length < 6) {
-                alert('Пароль повинен містити мінімум 6 символів');
-                return;
-            }
-
-            // Update user data
-            currentUser = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                city: city,
-                phone: phone,
-                bio: '',
-                joinDate: new Date().toISOString().split('T')[0]
-            };
-
-            isLoggedIn = true;
-            showProfile();
-        }
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      currentUser = {
+        firstName, lastName, email, city, phone, bio: '',
+        joinDate: new Date().toISOString().split('T')[0]
+      };
+      await setDoc(doc(db, "users", user.uid), currentUser);
+      isLoggedIn = true;
+      showProfile();
+    })
+    .catch((error) => alert('Помилка при реєстрації: ' + error.message));
+}
 
         function handleLogout() {
             isLoggedIn = false;
