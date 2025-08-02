@@ -635,21 +635,26 @@
         </div>
     </div>
     <script type="module">
-    // Імпорт SDK
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-firestore.js";
+  // Імпорт SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-auth.js";
+  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.1/firebase-firestore.js";
 
   const firebaseConfig = {
-  apiKey: "AIzaSyALg64Lu0_VOCIM9B5D6Jtf-L_ChM9V0wU",
-  authDomain: "ecoprofileapp.firebaseapp.com",
-  projectId: "ecoprofileapp",
-  storageBucket: "ecoprofileapp.firebasestorage.app",
-  messagingSenderId: "321872770647",
-  appId: "1:321872770647:web:e56c45434b931610e15512",
-  measurementId: "G-4EG39BB3F0"
-    };
-    </script>
+    apiKey: "AIzaSyALg64Lu0_VOCIM9B5D6Jtf-L_ChM9V0wU",
+    authDomain: "ecoprofileapp.firebaseapp.com",
+    projectId: "ecoprofileapp",
+    storageBucket: "ecoprofileapp.appspot.com",
+    messagingSenderId: "321872770647",
+    appId: "1:321872770647:web:e56c45434b931610e15512",
+    measurementId: "G-4EG39BB3F0"
+  };
+
+  // Ініціалізація Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+</script>
     <script>
          // Application State
         let isLoggedIn = false;
