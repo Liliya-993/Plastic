@@ -635,7 +635,6 @@
         </div>
     </div>
     <script type="module">
-  // Імпорт Firebase SDK
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { 
     getAuth, 
@@ -666,7 +665,6 @@
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Глобальний доступ до Firebase
   window.auth = auth;
   window.db = db;
   window.firebaseFunctions = {
@@ -680,48 +678,40 @@
     updateDoc
   };
 
-  // Application State
-  let isLoggedIn = false;
-  let isEditing = false;
-  let currentUser = {
-    firstName: 'Лілія',
-    lastName: 'Носова',
-    email: 'liliya.nosova@example.com',
-    city: 'Кременчук',
-    phone: '+380501234567',
-    bio: 'Еко-активістка, учениця Кременчуцького наукового ліцею "Політ". Захоплююся веб-розробкою та екологічними проєктами.',
-    joinDate: '2025-01-15'
+  // Стан додатку
+  window.appState = {
+    isLoggedIn: false,
+    isEditing: false,
+    currentUser: {}
   };
 
-  // Глобальний доступ до змінних
-  window.appState = { isLoggedIn, isEditing, currentUser };
   window.setAppState = (newState) => {
     Object.assign(window.appState, newState);
   };
 
-  // Navigation Functions
-  window.showLogin = function() {
+  // Навігація
+  window.showLogin = () => {
     document.getElementById('loginPage').classList.remove('hidden');
     document.getElementById('registerPage').classList.add('hidden');
     document.getElementById('profilePage').classList.add('hidden');
   };
 
-  window.showRegister = function() {
+  window.showRegister = () => {
     document.getElementById('loginPage').classList.add('hidden');
     document.getElementById('registerPage').classList.remove('hidden');  
     document.getElementById('profilePage').classList.add('hidden');
   };
 
-  window.showProfile = function() {
+  window.showProfile = () => {
     document.getElementById('loginPage').classList.add('hidden');
     document.getElementById('registerPage').classList.add('hidden');
     document.getElementById('profilePage').classList.remove('hidden');
     window.loadProfile();
   };
 
-  // Authentication Functions
-  window.handleLogin = async function() {
-    const email = document.getElementById('loginEmail').value;
+  // Функції аутентифікації
+  window.handleLogin = async () => {
+    const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value;
 
     if (!email || !password) {
@@ -730,14 +720,13 @@
     }
 
     try {
-      const userCredential = await window.firebaseFunctions.signInWithEmailAndPassword(window.auth, email, password);
+      const userCredential = await window.firebaseFunctions.signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      const docRef = window.firebaseFunctions.doc(window.db, "users", user.uid);
-      const docSnap = await window.firebaseFunctions.getDoc(docRef);
-      
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
       if (docSnap.exists()) {
-        window.appState.currentUser = docSnap.data();
-        window.appState.isLoggedIn = true;
+        window.setAppState({ currentUser: docSnap.data(), isLoggedIn: true });
         window.showProfile();
         window.showNotification('Успішний вхід!', 'success');
       } else {
@@ -749,14 +738,14 @@
     }
   };
 
-  window.handleRegister = async function() {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const email = document.getElementById('registerEmail').value;
+  window.handleRegister = async () => {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const city = document.getElementById('city').value;
-    const phone = document.getElementById('phone').value;
+    const city = document.getElementById('city').value.trim();
+    const phone = document.getElementById('phone').value.trim();
 
     if (!firstName || !lastName || !email || !password) {
       window.showNotification('Будь ласка, заповніть обов\'язкові поля', 'error');
@@ -772,14 +761,23 @@
     }
 
     try {
-      const userCredential = await window.firebaseFunctions.createUserWithEmailAndPassword(window.auth, email, password);
+      const userCredential = await window.firebaseFunctions.createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      window.appState.currentUser = {
-        firstName, lastName, email, city, phone, bio: '',
+
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        city,
+        phone,
+        bio: '',
         joinDate: new Date().toISOString().split('T')[0]
       };
-      await window.firebaseFunctions.setDoc(window.firebaseFunctions.doc(window.db, "users", user.uid), window.appState.currentUser);
-      window.appState.isLoggedIn = true;
+
+      await setDoc(doc(db, "users", user.uid), userData);
+
+      // Оновлюємо стан і показуємо профіль
+      window.setAppState({ currentUser: userData, isLoggedIn: true });
       window.showProfile();
       window.showNotification('Реєстрація успішна!', 'success');
     } catch (error) {
@@ -788,108 +786,114 @@
     }
   };
 
-  window.handleLogout = function() {
-    window.appState.isLoggedIn = false;
-    window.appState.isEditing = false;
-    window.showLogin();
-    
-    // Clear forms
-    document.getElementById('loginEmail').value = '';
-    document.getElementById('loginPassword').value = '';
+  window.handleLogout = async () => {
+    try {
+      await signOut(auth);
+      window.setAppState({ isLoggedIn: false, isEditing: false, currentUser: {} });
+      window.showLogin();
+
+      // Очищаємо форми
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPassword').value = '';
+    } catch (error) {
+      console.error('Logout error:', error);
+      window.showNotification('Помилка при виході', 'error');
+    }
   };
 
-  // Profile Functions
-  window.loadProfile = function() {
+  // Функції профілю
+  window.loadProfile = () => {
     const user = window.appState.currentUser;
-    document.getElementById('firstNameView').textContent = user.firstName;
-    document.getElementById('lastNameView').textContent = user.lastName;
-    document.getElementById('emailView').textContent = user.email;
-    document.getElementById('cityView').textContent = user.city;
-    document.getElementById('phoneView').textContent = user.phone;
-    document.getElementById('bioView').textContent = user.bio || 'Не вказано';
-    
-    const joinDate = new Date(user.joinDate).toLocaleDateString('uk-UA');
-    document.getElementById('joinDate').textContent = joinDate;
+
+    const fieldsView = {
+      firstNameView: user.firstName || '',
+      lastNameView: user.lastName || '',
+      emailView: user.email || '',
+      cityView: user.city || '',
+      phoneView: user.phone || '',
+      bioView: user.bio || 'Не вказано',
+      joinDate: user.joinDate ? new Date(user.joinDate).toLocaleDateString('uk-UA') : ''
+    };
+
+    for (const id in fieldsView) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = fieldsView[id];
+    }
   };
 
-  window.toggleEdit = function() {
+  window.toggleEdit = () => {
     window.appState.isEditing = !window.appState.isEditing;
-    
+
+    const viewElements = ['firstNameView', 'lastNameView', 'emailView', 'cityView', 'phoneView', 'bioView'];
+    const editElements = ['firstNameEdit', 'lastNameEdit', 'emailEdit', 'cityEdit', 'phoneEdit', 'bioEdit'];
+
     if (window.appState.isEditing) {
-      // Show edit controls
       document.getElementById('editBtn').classList.add('hidden');
       document.getElementById('saveBtn').classList.remove('hidden');
       document.getElementById('cancelBtn').classList.remove('hidden');
       document.getElementById('changePhotoBtn').classList.remove('hidden');
-      
-      // Show edit fields, hide view fields
-      const viewElements = ['firstNameView', 'lastNameView', 'emailView', 'cityView', 'phoneView', 'bioView'];
-      const editElements = ['firstNameEdit', 'lastNameEdit', 'emailEdit', 'cityEdit', 'phoneEdit', 'bioEdit'];
-      
-      viewElements.forEach(id => document.getElementById(id).classList.add('hidden'));
-      editElements.forEach(id => document.getElementById(id).classList.remove('hidden'));
-      
-      // Load current values into edit fields
+
+      viewElements.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+      editElements.forEach(id => document.getElementById(id)?.classList.remove('hidden'));
+
       const user = window.appState.currentUser;
-      document.getElementById('firstNameEdit').value = user.firstName;
-      document.getElementById('lastNameEdit').value = user.lastName;
-      document.getElementById('emailEdit').value = user.email;
-      document.getElementById('cityEdit').value = user.city;
-      document.getElementById('phoneEdit').value = user.phone;
-      document.getElementById('bioEdit').value = user.bio;
+      document.getElementById('firstNameEdit').value = user.firstName || '';
+      document.getElementById('lastNameEdit').value = user.lastName || '';
+      document.getElementById('emailEdit').value = user.email || '';
+      document.getElementById('cityEdit').value = user.city || '';
+      document.getElementById('phoneEdit').value = user.phone || '';
+      document.getElementById('bioEdit').value = user.bio || '';
+    } else {
+      window.cancelEdit();
     }
   };
 
-  window.saveProfile = async function() {
-    // Get values from edit fields
-    window.appState.currentUser.firstName = document.getElementById('firstNameEdit').value;
-    window.appState.currentUser.lastName = document.getElementById('lastNameEdit').value;
-    window.appState.currentUser.email = document.getElementById('emailEdit').value;
-    window.appState.currentUser.city = document.getElementById('cityEdit').value;
-    window.appState.currentUser.phone = document.getElementById('phoneEdit').value;
-    window.appState.currentUser.bio = document.getElementById('bioEdit').value;
-    
-    // Save to Firebase if user is authenticated
+  window.saveProfile = async () => {
+    window.appState.currentUser.firstName = document.getElementById('firstNameEdit').value.trim();
+    window.appState.currentUser.lastName = document.getElementById('lastNameEdit').value.trim();
+    window.appState.currentUser.email = document.getElementById('emailEdit').value.trim();
+    window.appState.currentUser.city = document.getElementById('cityEdit').value.trim();
+    window.appState.currentUser.phone = document.getElementById('phoneEdit').value.trim();
+    window.appState.currentUser.bio = document.getElementById('bioEdit').value.trim();
+
     try {
-      if (window.auth.currentUser) {
-        const userRef = window.firebaseFunctions.doc(window.db, "users", window.auth.currentUser.uid);
-        await window.firebaseFunctions.updateDoc(userRef, window.appState.currentUser);
+      if (auth.currentUser) {
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(userRef, window.appState.currentUser);
         window.showNotification('Профіль оновлено!', 'success');
       }
     } catch (error) {
       console.error('Save error:', error);
       window.showNotification('Помилка при збереженні', 'error');
     }
-    
-    // Update view fields
+
     window.loadProfile();
-    
-    // Exit edit mode
     window.cancelEdit();
   };
 
-  window.cancelEdit = function() {
+  window.cancelEdit = () => {
     window.appState.isEditing = false;
-    
-    // Show view controls
+
     document.getElementById('editBtn').classList.remove('hidden');
     document.getElementById('saveBtn').classList.add('hidden');
     document.getElementById('cancelBtn').classList.add('hidden');
     document.getElementById('changePhotoBtn').classList.add('hidden');
-    
-    // Show view fields, hide edit fields
+
     const viewElements = ['firstNameView', 'lastNameView', 'emailView', 'cityView', 'phoneView', 'bioView'];
     const editElements = ['firstNameEdit', 'lastNameEdit', 'emailEdit', 'cityEdit', 'phoneEdit', 'bioEdit'];
-    
-    viewElements.forEach(id => document.getElementById(id).classList.remove('hidden'));
-    editElements.forEach(id => document.getElementById(id).classList.add('hidden'));
+
+    viewElements.forEach(id => document.getElementById(id)?.classList.remove('hidden'));
+    editElements.forEach(id => document.getElementById(id)?.classList.add('hidden'));
   };
 
-  // Utility Functions
-  window.togglePassword = function(inputId) {
+  // Utility
+  window.togglePassword = (inputId) => {
     const input = document.getElementById(inputId);
-    const icon = input.nextElementSibling.querySelector('i');
-    
+    if (!input) return;
+
+    const icon = input.nextElementSibling?.querySelector('i');
+    if (!icon) return;
+
     if (input.type === 'password') {
       input.type = 'text';
       icon.classList.remove('fa-eye');
@@ -901,9 +905,8 @@
     }
   };
 
-  // Notification system
-  window.showNotification = function(message, type = 'success') {
-    // Create notification element if it doesn't exist
+  // Notifications
+  window.showNotification = (message, type = 'success') => {
     let notification = document.getElementById('notification');
     if (!notification) {
       notification = document.createElement('div');
@@ -922,11 +925,10 @@
       `;
       document.body.appendChild(notification);
     }
-    
+
     notification.textContent = message;
     notification.className = '';
-    
-    // Set background color based on type
+
     switch(type) {
       case 'success':
         notification.style.background = '#059669';
@@ -937,19 +939,41 @@
       case 'warning':
         notification.style.background = '#d97706';
         break;
+      default:
+        notification.style.background = '#059669';
     }
-    
-    // Show notification
+
     notification.style.transform = 'translateX(0)';
-    
-    // Hide after 3 seconds
+
     setTimeout(() => {
       notification.style.transform = 'translateX(400px)';
     }, 3000);
   };
 
-  // Initialize app
-  document.addEventListener('DOMContentLoaded', function() {
+  // Ініціалізація
+  document.addEventListener('DOMContentLoaded', () => {
     window.showLogin();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const docRef = doc(db, "users", user.uid);
+        getDoc(docRef).then(docSnap => {
+          if (docSnap.exists()) {
+            window.setAppState({ currentUser: docSnap.data(), isLoggedIn: true });
+            window.showProfile();
+          } else {
+            window.showNotification('Профіль не знайдено', 'error');
+            window.showLogin();
+          }
+        }).catch(error => {
+          console.error('Error loading profile:', error);
+          window.showNotification('Помилка при завантаженні профілю', 'error');
+          window.showLogin();
+        });
+      } else {
+        window.setAppState({ isLoggedIn: false, currentUser: {} });
+        window.showLogin();
+      }
+    });
   });
 </script>
