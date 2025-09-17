@@ -4,25 +4,62 @@
 */
 /* Медіа-запити для мобільних пристроїв */
 @media (max-width: 768px) {
-  .container {
-    width: 90%;
-    padding: 10px;
+  .wrapper, 
+  .wrapper-full {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
   }
 
-  body {
+  .header___wrapper,
+  .header___wrapper2 {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .header___list,
+  .header___list2 {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .header___item {
+    margin: 10px 0;
+  }
+
+  .intro {
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .intro___title {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .intro___subtitle {
     font-size: 16px;
+    line-height: 24px;
+    text-align: center;
   }
 
-  h1 {
-    font-size: 1.5rem;
+  .benefits___cards {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    padding: 0 20px;
   }
 
-  /* Якщо є бокове меню або великі відступи, зменшуємо */
-  nav, header, footer {
-    padding: 10px;
+  .plastic__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .plastic__info-cards {
+    padding: 0 20px;
   }
 }
-
 * {
     box-sizing: border-box;
 }
