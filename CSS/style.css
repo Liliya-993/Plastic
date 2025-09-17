@@ -2,6 +2,27 @@
   v2.0-modified | 20110126
   License: none (public domain)
 */
+/* Медіа-запити для мобільних пристроїв */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Якщо є бокове меню або великі відступи, зменшуємо */
+  nav, header, footer {
+    padding: 10px;
+  }
+}
+
 * {
     box-sizing: border-box;
 }
