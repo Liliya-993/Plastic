@@ -166,6 +166,9 @@
     max-width: 95%;
     transform: translateY(-20px);
   }
+  iframe {
+    width: 787px;
+  }
 }
 
 * {
