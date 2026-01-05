@@ -1,628 +1,211 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Пластикове забруднення: виклик для майбутнього</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        />
-        <link rel="stylesheet" href="./CSS/style.css" />
+        <title>Міфи та Міфології</title>
     </head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom, #304A29, #668751);
+            color: #F8F9ED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .logo img {
+            align-items: center;
+            width: 350px;
+            height: 350px;
+            padding-bottom: 40px;
+        }
+
+        .intro-subtitle {
+            margin-top: 20px;
+            max-width: 900px;
+            text-align: center;
+            font-size: 30px;
+            color: #F8F9ED;
+        }
+
+        /* Сітка кнопок 2x2 */
+        .buttons-wrap {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 1000px; /* фіксована ширина для симетрії */
+        }
+
+        .buttons-wrap a {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #668751;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+
+        .buttons-wrap a:hover {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #668751;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px 16px; /* вертикальні/горизонтальні відступи */
+            gap: 6px; /* відстань між рядками */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: transparent;
+            color: #F8F9ED;
+            text-align: center;
+        }
+
+        .footer h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #F8F9ED;
+        }
+        .footer a {
+            color: #F8F9ED;
+            text-decoration: none;
+            text-underline-offset: 3px;
+        }
+        .footer a:hover {
+            opacity: 0.5;
+        } 
+    </style>
     <body>
-        <!-- Header start -->
-         <a id="top"></a>
-        <header class="header">
-            <div class="wrapper">
-                <div class="header___wrapper">
-                    <div class="header___logo">
-                        <a href="index.html" class="header___logo-link">
-                            <img
-                                src="./img/svg/odigo-logo.svg"
-                                alt="ЕкоЛань"
-                                class="header___logo-pic"
-                            />
-                        </a>
-                    </div>
-                </div>
-                <nav class="header___nav">
-                    <ul class="header___list">
-                        <li class="header___item">
-                            <a href="Page-tabl.html" class="header___link"
-                                >Таблиці</a
-                            >
-                        </li>
+        <!-- Контейнер для particles.js -->
+        <div
+            id="particles-js"
+            style="
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            "
+        ></div>
 
-                        <li class="header___item">
-                            <a href="test.html" class="header___link">Тест</a>
-                        </li>
-                        <li class="header___item">
-                            <a href="register.html" class="header___link">Реєстрація</a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </div>
-        </header>
-        <!-- Header end -->
-
+        <!-- Головний блок -->
         <main class="main">
-            <!-- Intro start -->
+            <!-- Логотип -->
+            <div class="logo">
+                <img src="/images/logo.svg" alt="Logo" />
+            </div>
 
-            <section class="intro">
-                <div class="wrapper">
-                    <h1 class="intro___title">
-                        Пластикове забруднення: виклик для майбутнього
-                    </h1>
-                    <p class="intro___subtitle">
-                        На цьому сайті я разповім вам про шкоду, яку ми наносимо
-                        планеті Земля кожного дня, чому важливо переробляти
-                        пластик та як він шкодить тваринам та рослинам.
-                    </p>
-                </div>
-            </section>
-            <!-- Intro end -->
+            <!-- Коротке пояснення -->
+            <p class="intro-subtitle">
+                Екологічне забруднення: факти, причини, рішення
+            </p>
 
-            <!-- Benefits start -->
-            <section class="benefits">
-                <div class="benefits___wrap">
-                    <h1 class="benefits___title">Важлива інформація</h1>
-                    <div class="benefits___cards">
-                        <div class="benefits___card">
-                            <div class="benefits___card-pic">
-                                <img
-                                    src="./img/svg/Icon.svg"
-                                    alt="Welcome to Odigo!"
-                                    class="benefits___card-thump"
-                                />
-                            </div>
-                            <h2 class="benefits___card-title">Про проєкт</h2>
-                            <p class="benefits___csrt-desc">
-                                Це моя перша спроба зарекомендувати себе як
-                                веброзробник, і перша робота на
-                                конкурс.
-                            </p>
-                        </div>
-                        <div class="benefits___card">
-                            <div class="benefits___card-pic">
-                                <img
-                                    src="./img/svg/person.svg"
-                                    alt="Your Personal Japan Guide"
-                                    class="benefits___card-thump"
-                                />
-                            </div>
-                            <h2 class="benefits___card-title">Про автора</h2>
-                            <p class="benefits___csrt-desc">
-                                Розробник та дизайнер - Носова Лілія, учениця Кременчуцького
-                                наукового ліцею "Політ", групи Л-10В.
-                            </p>
-                        </div>
-                        <div class="benefits___card">
-                            <div class="benefits___card-pic">
-                                <img
-                                    src="./img/svg/shop.svg"
-                                    alt="Promoting Local Businesses"
-                                    class="benefits___card-thump"
-                                />
-                            </div>
-                            <h2 class="benefits___card-title">Про сайт</h2>
-                            <p class="benefits___csrt-desc">
-                                Я дослiджувала багато рiзноманітної iнформацiї з
-                                рiзних джерел i намагалася вмiстити це все сюди.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Benefits end -->
-
-            <!-- plastic start -->
-
-            <section class="plastic">
-                <div class="wrapper-full">
-                    <h1 class="section-title">Шкода яку наносить пластик</h1>
-                    <p class="plastic__desc section-desc">
-                        Лелеці, що заплутався в пластиковому пакеті, ще дуже
-                        пощастило. Так само, як і морській черепасі, що
-                        опинилася в пастці зі старих пластикових рибальських
-                        сіток. Її велика голова не могла пройти крізь заплутане
-                        плетиво, щоб вдихнути повітря з поверхні. На щастя, ці
-                        історії закінчилися благополучно — люди прийшли на
-                        допомогу вчасно. Однак багато інших жертв пластику не
-                        мали такої удачі — часто їх знаходять вже
-                        напіврозкладеними, заплутаними у міцний поліетилен, що
-                        не піддається природним процесам.
-                        <span class="tooltip"
-                            >[?]
-                            <span class="tooltip-text"
-                                >Текст взятий з "Забруднення пластиком: скільки
-                                часу розкладається пластик - ELS системи"</span
-                            >
-                        </span>
-                    </p>
-                    <p class="plastic__desc section-desc">
-                        Науковці наголошують на тому, що вироби з пластику
-                        вбивають величезну кількість птахів, морських ссавців та
-                        руйнують екосистему океану. Викинуті та забуті речі,
-                        такі як, наприклад, рибальські тенети убивають
-                        дельфінів, морських черепах та інших тварин. У водах
-                        нашої планети на сьогодні перебуває приблизно 6 трлн
-                        частинок сміття. Понад 600 видів морських тварин
-                        безпосередньо страждають від пластикового забруднення.
-                        Вчені прогнозують, що до 2050 року у морі буде більше
-                        пластику, аніж риби. То які ж види пластику ми
-                        використовуємо у побуті, як він впливає на здоров’я та
-                        скільки розкладається?
-                    </p>
-                    <div class="plastic__cards">
-                        <div class="plastic__card plastic__card-size">
-                            <a
-                                href="https://www.shutterstock.com/ru/search/animals-water-pollution"
-                                class="tooltip image-link"
-                            >
-                                <img
-                                    src="./img/tirtle_and_plastic.jpg"
-                                    alt="turtle and plastic"
-                                />
-                                <span class="tooltip-text"
-                                    >Взято з Shutterstock</span
-                                >
-                            </a>
-                        </div>
-                        <div class="plastic__card plastic__card-lg">
-                            <a
-                                href="https://insider.si.edu/2012/06/the-age-of-plastic-symposium-june-7-8-2012/"
-                                class="tooltip image-link"
-                            >
-                                <img
-                                    src="./img/dead-bird.jpg"
-                                    alt="Dead bird"
-                                />
-                                <span class="tooltip-text"
-                                    >Взято з Smithsonian Insider</span
-                                >
-                            </a>
-                        </div>
-                        <div class="plastic__card plastic__card-lg">
-                            <a
-                                href="https://www.fairobserver.com/region/north_america/top-10-ways-destroy-water-earth-90897/"
-                                class="tooltip image-link"
-                            >
-                                <img
-                                    src="./img/plastic.jpg"
-                                    alt="Plastic in water"
-                                />
-                                <span class="tooltip-text"
-                                    >Взято з Fair Observer</span
-                                >
-                            </a>
-                        </div>
-                    </div>
-                    <p class="plastic__desc section-desc">
-                        Морське смiття є загрозою для морського життя: птахiв,
-                        черепах, акул та морських ссавцiв. Пластмаса є основною
-                        частиною морських вiдходiв, якi завдають шкоди,
-                        спричиняючи травми, смерть через потоплення,
-                        заплутування або голод вiд споживання пластику.
-                    </p>
-                    <p class="plastic__desc section-desc">
-                        Мiкропластик легко потрапляє в органiзми планктону, що є
-                        основою харчових ланцюгiв, i поширюється через них на
-                        хижакiв. У результатi бiльшiсть морських тварин мiстить
-                        пластик у своїх тiлах. Вiн не лише механiчно шкодить
-                        органiзму, але й накопичує токсичнi речовини, що ще
-                        бiльше загострює ситуацiю. Наприклад, молюски та риби
-                        вiдчувають запальнi процеси, а у мишей, що споживали
-                        забруднену воду, були виявленi патологiчнi змiни в
-                        органах. Птахи, ковтаючи пластик, гинуть вiд виснаження,
-                        оскiльки вiдходи не мають поживної цiнностi, але
-                        заповнюють шлунок. Пластик також використовується ними
-                        для побудови гнiзд, що призводить до поранень i загибелi
-                        пташенят.
-                    </p>
-                    <p class="plastic__desc section-desc">
-                        Мiкро пластик також шкодить людям, адже через продукти
-                        харчування людина в середньому споживає близько 5 грамiв
-                        мiкропластику на тиждень. Це приблизно еквiвалентно вазi
-                        пластикової кредитної картки. Вiн часто потрапляє в
-                        морепродукти, такi як риба та молюски, що призводить до
-                        його накопичення в тiлi людини. Окрiм цього,
-                        мiкропластик здатний поглинати токсичнi речовини, як-от
-                        важкi метали (кадмiй, свинець) та хiмiчнi сполуки, такi
-                        як бiсфенол. Цi речовини, потрапляючи до органiзму,
-                        можуть викликати серйознi проблеми зi здоров'ям, зокрема
-                        порушення роботи печiнки, нирок, гормональнi збої, а
-                        також пiдвищену тривожнiсть i проблеми з поведiнкою.
-                        Часточки пластику також можуть накопичуватися в тканинах
-                        i викликати запальнi процеси та пошкодження клiтин.
-                    </p>
-                    <div class="video">
-                        <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/hRx9ZrbCXG4?si=GrRTe9BNK27wApCm"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                    <h1 class="section-title">
-                        Види пластику та тривалiсть розкладання
-                    </h1>
-                </div>
-            </section>
-
-            <section class="plastic">
-                <div class="wrapper-full">
-                    <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic1.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Поліетилен терефталат, PET або ПЕТ
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    Даний тип пластику здатний випаровуватись
-                                    під дією прямих сонячних променів та високої
-                                    температури, виділяючи у середовище
-                                    (повітря, воду, ґрунт) токсичні та
-                                    канцерогенні сполуки.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic2.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Поліетилен високої щільності, PEHD (HDPE)
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    З нього виготовляють пляшки, іграшки, тару
-                                    для продуктів, харчову плівку та багато
-                                    іншого. Практично не розкладається (період
-                                    розпаду більше 1000 років), проте ефективно
-                                    переробляється при правильному сортуванні.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic3.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Полівінілхлорид, PVC або ПВХ
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    Один із перших різновидів пластику – з нього
-                                    виробляють меблі, штучну шкіру, кабелі,
-                                    пляшки для рослинних олій тощо. Це один з
-                                    найбільш токсичних видів пластику, оскільки
-                                    уже через 10 років з нього виділяються
-                                    хлорвмісні токсичні сполуки.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic4.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Поліетилен низької щільності, PELD (LDPE)
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    Саме з нього виготовляється більшість
-                                    пакетів, він є основою підгузків та
-                                    прокладок. Розкладається близько 500 років.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic5.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Поліпропілен, PP або ПП
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    основа пластикових кришечок, харчових
-                                    лотків, стаканчиків, упаковки для круп,
-                                    цукерок (характерна ознака – шурхотіння). У
-                                    ґрунті чистий поліпропілен розкладаєтеся
-                                    повністю за 20-30 років, проте цей період
-                                    залежить від домішок і може супроводжуватись
-                                    виділенням токсичних альдегідів.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic6.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Полістирол, PS або ПС
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    так маркується практично весь одноразовий
-                                    посуд. Даний вид пластику є основним
-                                    забруднювачем океанів. Донедавна вважалось,
-                                    що він має тривалий період розкладання
-                                    (більше 1000 років), проте останні
-                                    дослідження встановили, що під дією сонячних
-                                    променів полістирен розчиняється у воді за
-                                    100-300 років.
-                                </p>
-                            </div>
-                            <div class="swiper-slide plastic__info-card">
-                                <div class="plastic__card-pic">
-                                    <img
-                                        src="./img/svg/plastic7.svg"
-                                        class="plastic__card-thump"
-                                    />
-                                </div>
-                                <h2 class="plastic__card-title">
-                                    Інше або оther
-                                </h2>
-                                <p class="plastic__cart-desc">
-                                    До цієї категорії належать багатошарові
-                                    упаковки, для яких важко визначити період
-                                    розкладання.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination"></div>
-
-                        <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>
-                </div>
-            </section>
-            <section class="plastic">
-                <div class="wrapper-full">
-                    <p class="plastic__desc section-desc">
-                        Пластик розкладається дуже повiльно, i цей процес може
-                        тривати вiд 50 до 500 рокiв, залежно вiд його типу та
-                        умов навколишнього середовища. Наприклад, пластиковi
-                        пакети розкладаються протягом 10-20 рокiв, а пластиковi
-                        пляшки можуть зникати до 450 рокiв. Мiцнiшi пластиковi
-                        вироби, такi як рибальськi сiтки, можуть розкладатися
-                        понад 600 рокiв. Однак навiть пiсля початку розкладання
-                        пластик не зникає повнiстю, а розпадається на
-                        мiкропластик — дрiбнi частинки, якi залишаються в
-                        навколишньому середовищi та продовжують шкодити
-                        екосистемам. На сьогоднi “Спiлкою пластикової
-                        промисловостi” (SPI) сформовано список 7 основних типiв
-                        пластмас залежно вiд особливостей переробки.
-                        <span class="tooltip"
-                            >[?]
-                            <span class="tooltip-text"
-                                >Матеріал взятий з "Шкода пластику для
-                                природи..." Ecogrizzly.shop</span
-                            >
-                        </span>
-                    </p>
-                    <div class="video">
-                        <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/UlYc1eqhhRM?si=bFeMHnV8EOAguNG7"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </div>
-               <!-- тут було шось --!>
-                        <div class="wrapper-full">
-                            <h1 class="section-title">
-                                Як можна позбуватися пластику?
-                            </h1>
-                            <p class="section-desc">
-                                Науковці, які досліджували нові способи боротьби
-                                із забрудненням пластиком, виявили унікальний
-                                гриб, здатний розкладати цей матеріал. Уперше
-                                цей грибок, що отримав назву Pestalotiopsis
-                                microspora, був знайдений студентами Єльського
-                                університету в тропічних лісах Амазонки, в
-                                Еквадорі, у 2012 році. Виявилося, що цей
-                                організм може споживати поліуретановий пластик
-                                навіть за відсутності кисню, тобто в анаеробних
-                                умовах, що відкриває перспективи його
-                                використання на сміттєзвалищах, де такі умови є
-                                звичайними.
-                            </p>
-                            <p class="section-desc">
-                                Pestalotiopsis microspora має здатність
-                                перетравлювати пластик, розкладаючи його на
-                                органічні сполуки. Це відкриття має величезне
-                                значення, адже більшість пластикових відходів є
-                                стійкими до природного розкладу. Таким чином,
-                                грибок може посприяти вирішенню глобальної
-                                проблеми накопичення пластику, який щорічно
-                                потрапляє на звалища й забруднює екосистеми.
-                            </p>
-                            <div class="plastic__cards">
-                                <div class="plastic__card">
-                                    <a
-                                        href="https://mushroomobserver.org/observations/203284"
-                                        class="tooltip image-link"
-                                    >
-                                        <img
-                                            src="./img/Pestalotiopsis-microspora.jpg"
-                                        />
-                                        <span class="tooltip-text"
-                                            >Взято з Mushroom Observer</span
-                                        >
-                                    </a>
-                                </div>
-                            </div>
-                            <p class="section-desc">
-                                Пізніші дослідження виявили ще більше видів
-                                грибів, здатних розкладати пластик, серед яких
-                                відомі їстівні гриби, такі як глива. Цей гриб
-                                може не лише розкладати пластик, а й стати
-                                безпечним продуктом для споживання, коли в ньому
-                                більше не залишається токсичних речовин.
-                                Зокрема, глива, що завершила розкладання
-                                пластику, набуває солодкого смаку і стає
-                                придатною для їжі.
-                            </p>
-                            <p class="section-desc">
-                                Вивченням їстівних грибів, що переробляють
-                                пластик, займається Катаріна Унгер з
-                                Утрехтського університету, яка розробила
-                                прототип пристрою під назвою "Fungi Mutarium".
-                                Це пристрій для домашнього вирощування грибів,
-                                який дозволяє перетворювати пластик на їстівну
-                                грибкову біомасу. Його робота проста: пристрій
-                                заповнюється пластиковими відходами, які гриби
-                                поступово споживають, перетворюючи на безпечну
-                                біомасу. Через кілька тижнів цей грибок можна
-                                збирати та використовувати як їжу. "Fungi
-                                Mutarium" поки залишається на стадії
-                                дослідження, а питання безпеки вживання таких
-                                грибів ще вивчається, однак попередні результати
-                                виглядають багатообіцяючими.
-                            </p>
-                            <p class="section-desc">
-                                Вчені працюють над створенням рециркуляційних
-                                пристроїв, які дозволять вирощувати гриби, що
-                                переробляють пластик, у домашніх умовах, а також
-                                на полігонах, де вони поступово розкладатимуть
-                                пластикові відходи, зменшуючи обсяг сміття та
-                                захищаючи довкілля. Якщо подальші дослідження
-                                підтвердять безпеку споживання цих грибів, ця
-                                технологія стане інноваційним рішенням для
-                                переробки пластику й водночас відкриє новий
-                                ресурс для харчування. Такий підхід відповідає
-                                зростаючому попиту на альтернативні джерела
-                                білка й харчові ресурси, що робить його
-                                перспективним як для вирішення екологічних
-                                проблем, так і для створення сталого
-                                майбутнього.
-                            </p>
-                        </div>
-                        <h1 class="section-title">
-                            Перетворимо кришечки на щось корисне!
-                        </h1>
-                        <form class="search-form">
-                            <fieldset class="search-form___wrap">
-                                <p class="search-form___info">
-                                    <input
-                                        type="number"
-                                        id="inputValue"
-                                        name="user-like-to-do"
-                                        class="search-form___field"
-                                        placeholder="Скільки кг пластику потрібно?"
-                                    />
-                                </p>
-
-                                <p class="search-form___info">
-                                    <!-- Поле для виводу результату -->
-                                    <label for="resultField"></label>
-                                    <input
-                                        type="text"
-                                        id="resultField"
-                                        class="search-form___field2"
-                                        readonly
-                                        placeholder="Тут з'явиться кількість кришечок"
-                                    />
-                                </p>
-
-                                <button
-                                    type="button"
-                                    class="search-form___button"
-                                    onclick="calculate()"
-                                >
-                                    Обчислити
-                                </button>
-                            </fieldset>
-                        </form>
-                        <div class="wrapper-table">
-                            <table>
-                                <tr>
-                                    <th>Скільки пластику потрібно</th>
-                                    <th>Що можна зробити</th>
-                                </tr>
-                                <tr>
-                                    <td>0.8 кг</td>
-                                    <td>Котушка пластику для 3D прінтера</td>
-                                </tr>
-                                <tr>
-                                    <td>1 кг</td>
-                                    <td>Протез руки</td>
-                                </tr>
-                                <tr>
-                                    <td>2 кг</td>
-                                    <td>Протез ноги</td>
-                                </tr>
-                                <tr>
-                                    <td>0.02 кг</td>
-                                    <td>Протез зубів (один зуб)</td>
-                                </tr>
-                                <tr>
-                                    <td>0.5 кг</td>
-                                    <td>
-                                        Горщик для квітки (діаметром 15-20 см)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0.15 кг</td>
-                                    <td>Кружка (об'ємом 250-300 мл)</td>
-                                </tr>
-                                <tr>
-                                    <td>0.03 кг</td>
-                                    <td>Ложка столова</td>
-                                </tr>
-                                <tr>
-                                    <td>0.035 кг</td>
-                                    <td>Веделка</td>
-                                </tr>
-                                <tr>
-                                    <td>0.15 кг</td>
-                                    <td>Тарілка (діаметром 25-30 см)</td>
-                                </tr>
-                            </table>
-                        </div>
-                         <div>
-                            <!--button class="Up-to-top" onclick="up"-->
-                            <a href="#top"
-                                ><img
-                                    class="Up-to-top"
-                                    src="img/svg/Up-to-top.svg"
-                                    onclick="scrollToTop(event)"
-                            /></a>
-                            <!--/button-->
-                        </div>
-                    </section>
-                </div>
-            </section>
+            <!-- Кнопки -->
+            <div class="buttons-wrap">
+                <a href="#" class="shift-button">Про Пластик</a>
+                <a href="#" class="shift-button">Про Батареї та Акумулятори</a>
+                <a href="#" class="shift-button">Далі буде</a>
+            </div>
+            <div class="footer">
+                <h1>Джерела:</h1>
+                <p>---</p>
+                <p>© 2025 EcoLan. Всі права захищені.</p>
+                <a href="https://www.instagram.com/web_goblin_/"
+                    >Інстаграм: web_goblin_</a
+                >
+            </div>
         </main>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="./js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     </body>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 60,
+                    density: { enable: true, value_area: 800 },
+                },
+                color: { value: "#ffffff" },
+                shape: {
+                    type: "circle",
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 140,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
 </html>
