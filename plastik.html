@@ -1,15 +1,268 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Пластикове забруднення: виклик для майбутнього</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        />
-    </head>
-  <body>
-      
-  </body>
+        <title>Міфи та Міфології</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom, #304A29, #668751);
+            color: #F8F9ED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .logo img {
+            align-items: center;
+            width: 350px;
+            height: 350px;
+            padding-bottom: 20px;
+        }
+
+        .intro-title {
+            margin-top: 20px;
+            max-width: 900px;
+            text-align: center;
+            font-size: 70px;
+            color: #F8F9ED;
+        }
+
+        .buttons-wrap {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 1000px; /* фіксована ширина для симетрії */
+            margin-bottom: 150px;
+        }
+
+        .buttons-wrap a {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+
+        .buttons-wrap a:hover {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba(26, 34, 51, 0.75);
+            padding: 20px 16px; /* вертикальні/горизонтальні відступи */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #F8F9ED;
+            text-align: center;
+        }
+
+        .footer-logo,
+        .footer-social-medias,
+        .footer-info-code {
+            width: 30%;
+        }
+        
+        .footer h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #F8F9ED;
+        }
+        .footer a {
+            color: #F8F9ED;
+            text-decoration: none;
+            text-underline-offset: 3px;
+        }
+        .footer a:hover {
+            opacity: 0.5;
+        }
+        .footer-logo img {
+            max-width: 180px;
+        }
+        .footer-logo img:active {
+        transform: scale(0.9) rotate(-2deg);
+        }
+    </style>
+    <body>
+        <!-- Контейнер для particles.js -->
+        <div
+            id="particles-js"
+            style="
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            "
+        ></div>
+
+        <!-- Головний блок -->
+        <main class="main">
+            <!-- Логотип -->
+            <div class="logo">
+                <img src="./img/svg/logo-new.svg" alt="Logo" />
+            </div>
+            <h1 class="intro-title">
+                Пластик, який не зникає
+            </h1>
+            <p intro-desc>
+                Ця сторінка присвячена пластику, його видам та інформації 
+                яку цікаво та корисно знати. Автор проаналізував багато джерел 
+                інформації і намагався подати її якомого доступніше та цікавіше.
+            </p>
+            <h2>Ввідна частина</h2>
+            <p>
+                Пластикове забруднення стало однією з наймасштабніших глобальних
+                екологічних криз. Велика частина пластмасових відходів, викинутих
+                людиною, не розкладається природним шляхом і накопичується в довкіллі, 
+                особливо в океанах та річках. Ці матеріали завдають шкоди не лише
+                дикій природі, але й здоров’ю людини.
+            </p>
+            <p>
+                Вода, повітря, ґрунт і навіть продукти харчування містять частинки 
+                пластику—від великих уламків до мікро- і наночастинок, які утворюються
+                внаслідок розпаду більших предметів. У 2025–2026 роках наукові дослідження
+                підтвердили, що мікропластик і нанопластик можуть проникати в тканини 
+                організмів, накопичуватися в органах і навіть проходити через плаценту у 
+                людини та тварин.
+                <span class="tooltip">[?]
+                    <span class="tooltip-text">
+                        Джерело інформації: 
+                    </span>
+                </span>
+            </p>
+            <!-- Кнопки -->
+            <div class="buttons-wrap">
+                <a href="#" class="shift-button">Про Пластик</a>
+                <a href="#" class="shift-button">Про Батареї та Акумулятори</a>
+                <a href="#" class="shift-button">Далі буде</a>
+            </div>
+            <div class="footer">
+                <div class="footer-info-code">
+                    <h1>Джерела:</h1>
+                    <p>---</p>
+                    <h1>Запозичений код</h1>
+                    <p>
+                        Партікли взяті з:
+                        <a href="https://vincentgarreau.com/particles.js/">particles.js</a>
+                    </p>
+                </div>
+                <div class="footer-logo">
+                    <img onclick="RandomMashineSound()" src="./img/svg/mashine-ultrakill.svg" alt="UltraKill"/>
+                    <p>© 2025 EcoLan. Всі права захищені.</p>
+                </div>
+                <div class="footer-social-medias">
+                    <a href="https://www.instagram.com/web_goblin_/">Інстаграм: web_goblin_</a>
+                    <p>Gmail: </p>
+                </div>
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    </body>
+    <script>
+        sounds = [
+            "./Звуки-MP3-для-проекту/1.mp3",
+            "./Звуки-MP3-для-проекту/2.mp3",
+            "./Звуки-MP3-для-проекту/3.mp3",
+            "./Звуки-MP3-для-проекту/4.mp3",
+            "./Звуки-MP3-для-проекту/5.mp3"
+        ];
+        function RandomMashineSound(){
+            randomIndex = Math.floor(Math.random() * sounds.length);
+            audio = new Audio(sounds[randomIndex]);
+            audio.volume = 0.8;
+            audio.play();
+        };
+        
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 60,
+                    density: { enable: true, value_area: 800 },
+                },
+                color: { value: "#ffffff" },
+                shape: {
+                    type: "circle",
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 140,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
 </html>
