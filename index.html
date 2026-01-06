@@ -154,7 +154,7 @@
                     </p>
                 </div>
                 <div class="footer-logo">
-                    <img src="./img/svg/mashine-ultrakill.svg" alt="UltraKill"/>
+                    <img OnClick="RandomMashineSound" src="./img/svg/mashine-ultrakill.svg" alt="UltraKill"/>
                     <p>© 2025 EcoLan. Всі права захищені.</p>
                 </div>
                 <div class="footer-social-medias">
@@ -166,6 +166,20 @@
         <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     </body>
     <script>
+        sounds = [
+            "./Звуки-MP3-для-проекту/1.mp3",
+            "./Звуки-MP3-для-проекту/2.mp3",
+            "./Звуки-MP3-для-проекту/3.mp3",
+            "./Звуки-MP3-для-проекту/4.mp3",
+            "./Звуки-MP3-для-проекту/5.mp3"
+        ];
+        function RandomMashineSound(){
+            randomIndex = Math.floor(Math.random() * sounds.length);
+            audio = new Audio(sounds[randomIndex]);
+            audio.volume = 0.4;
+            audio.play();
+        };
+        
         particlesJS("particles-js", {
             particles: {
                 number: {
