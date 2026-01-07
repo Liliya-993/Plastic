@@ -327,6 +327,21 @@
             max-width: 75%;
             margin:auto;
         }
+
+        .Up-to-top {
+            position: fixed;
+            width: 70px;
+            bottom: 30px;
+            left: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .Up-to-top:hover {
+            transform: scale(1.1);
+        }
+        
     </style>
     <body>
         <!-- Контейнер для particles.js -->
@@ -344,6 +359,25 @@
 
         <!-- Головний блок -->
         <main class="main">
+            <a href="#top">
+                    <svg
+                        class="Up-to-top"
+                        viewBox="0 0 70 70"
+                        onclick="scrollToTop(event)"
+                    >
+                        <circle
+                            cx="35"
+                            cy="35"
+                            r="33"
+                            stroke="#f8f5ef"
+                            stroke-width="2"
+                        />
+                        <path
+                            d="M 35 20 L 25 32 L 30 32 L 30 48 L 40 48 L 40 32 L 45 32 Z"
+                            fill="#f8f5ef"
+                        />
+                    </svg>
+                </a>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <nav class="side-nav" id="sideNav">
                 <ul>
@@ -620,6 +654,11 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     </body>
     <script>
+        function scrollToTop(event) {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        
         function toggleMenu() {
             nav = document.getElementById("sideNav");
             nav.classList.toggle("open");
