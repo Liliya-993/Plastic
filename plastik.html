@@ -167,6 +167,7 @@
         .swiper {
             width: 100%;
             height: 500px;
+            overflow: visible; /* важливо, щоб tooltips виходили за межі слайдів */
         }
         
         .swiper-slide {
@@ -177,9 +178,10 @@
             box-sizing: border-box; /* дуже важливо, щоб padding не “ріс” за межі */
             padding: 20px;
             margin: 0 auto; /* центр слайда в контейнері */
+            overflow: visible; /* важливо, щоб tooltips виходили за межі слайдів */
         }
         
-        .swiper-slide {
+        .swiper-slide *{
             display: flex;
             flex-direction: column;
             justify-content: center;
