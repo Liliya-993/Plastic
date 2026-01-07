@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Міфи та Міфології</title>
+        <title>Пластик</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
     <style>
         body {
             margin: 0;
@@ -150,7 +154,7 @@
             <h1 class="intro-title">
                 Пластик, який не зникає
             </h1>
-            <p intro-desc>
+            <p class="intro-desc">
                 Ця сторінка присвячена пластику, його видам та інформації 
                 яку цікаво та корисно знати. Автор проаналізував багато джерел 
                 інформації і намагався подати її якомого доступніше та цікавіше.
@@ -411,6 +415,23 @@
         <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     </body>
     <script>
+        const swiper = new Swiper(".swiper", {
+            // Optional parameters
+            direction: "horizontal",
+            loop: true,
+        
+            // If we need pagination
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        
+            // Navigation arrows
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+        
         sounds = [
             "./Звуки-MP3-для-проекту/1.mp3",
             "./Звуки-MP3-для-проекту/2.mp3",
