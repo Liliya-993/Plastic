@@ -290,8 +290,13 @@
             height: 100vh;
             background-color: #304A29;
             padding-top: 80px;
-            transition: left 0.3s ease;
+        
+            transition: right 0.4s ease-in-out; 
             z-index: 1000;
+        }
+        
+        .side-nav.open {
+            right: 0;
         }
         
         .side-nav ul {
@@ -608,7 +613,7 @@
     <script>
         function toggleMenu() {
             nav = document.getElementById("sideNav");
-            nav.style.right = nav.style.right === "0px" ? "-260px" : "0px";
+            nav.classList.toggle("open");
         }
         
         const swiper = new Swiper(".swiper", {
