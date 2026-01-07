@@ -321,6 +321,11 @@
             background-color: rgba(255,255,255,0.1);
         }
 
+        .warning {
+            border: 2px solid red;
+            border-radius: 10px;
+            max-width: 30%;
+        }
     </style>
     <body>
         <!-- Контейнер для particles.js -->
@@ -341,10 +346,13 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <nav class="side-nav" id="sideNav">
                 <ul>
-                    <li><a href="index.html">Головна</a></li>
-                    <li><a href="Frontend.html">Frontend Developer</a></li>
-                    <li><a href="Beckend-index.html">Backend Developer</a></li>
-                    <li><a href="Full-stack Developer.html">Full-stack Developer</a></li>
+                    <li><a href="#start">Ввідна частина</a></li>
+                    <li><a href="#classes">Види пластику (особливості, застереження, базова інформація)</a></li>
+                    <ul>
+                        <li><ahref="#time">Орієнтовна тривалість розкладання основних видів пластику</a></li>
+                    </ul>
+                    <li><a href="#problem">Проблема, яку створює пластик</a></li>
+                    <li><a href="#ansver">Рішення проблеми</a></li>
                 </ul>
             </nav>
             <!-- Логотип -->
@@ -355,7 +363,7 @@
                 <img src="./img/svg/title-svg.svg" alt="Title" />
             </div>
             <div class="white-bg">
-                <h2 class="section-title">Ввідна частина</h2>
+                <h2 class="section-title" id="start">Ввідна частина</h2>
                 <p>
                     Пластикове забруднення стало однією з наймасштабніших глобальних
                     екологічних криз. Велика частина пластмасових відходів, викинутих
@@ -376,7 +384,7 @@
                         </span>
                     </span>
                 </p>
-                <h2 class="section-title">Види пластику (особливості, застереження, базова інформація)</h2>
+                <h2 class="section-title" id="classes">Види пластику (особливості, застереження, базова інформація)</h2>
                 <p>
                     Пластик — це широка група синтетичних полімерів, які виробляються здебільшого з нафти й природного газу. У побуті найчастіше зустрічаються такі види:
                 </p>
@@ -492,7 +500,7 @@
                     </span>
                 </span>
                 <section class="plastic-table">
-                    <h3>Орієнтовна тривалість розкладання основних видів пластику</h3>
+                    <h3 id="time">Орієнтовна тривалість розкладання основних видів пластику</h3>
                     <table>
                         <tr>
                             <th>Тип пластику</th>
@@ -528,7 +536,7 @@
                         </tr>
                     </table>
                 </section>
-                <h2 class="section-title">Проблема, яку створює пластик</h2>
+                <h2 class="section-title" id="problem">Проблема, яку створює пластик</h2>
                 <p>
                     Пластикові відходи створюють серйозну загрозу для екосистем. Великі фрагменти пластику травмують
                     і вбивають тварин, а дрібні частинки вбудовуються в харчові ланцюги. Мікропластик споживається
@@ -546,7 +554,7 @@
                         </span>
                     </span>
                 </p>
-                <h2 class="section-title">Рішення проблеми</h2>
+                <h2 class="section-title" id="ansver">Рішення проблеми</h2>
                 <p class="warning">
                     Варто зазначити що вся інформаціє є зібраною з різних джерел і може нагадувати вітраж з різнобарвних часточок. 
                     Автор не стверджує що все сказане є истиною і дійсно працює, а лише доносить інформацію яку знайшов в інтернеті.
