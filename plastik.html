@@ -201,31 +201,34 @@
         }
 
         table {
-            width: 80%;
-            padding: 30px;
-            font-weight: 220px;
-            font-size: 15px;
-            line-height: 22px;
-            font-weight: bold;
-            align-items: center;
-        }
-        
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-            border: 3px solid #C2A85D;
-            border-radius: 5px;
-        }
-        
-        td:hover {
-            background-color: #D8CFA5;
-        }
-        
-        th {
-            background-color: #D8CFA5;
-            color: #976B31;
-        }
+    width: 80%;
+    margin: 30px auto; /* центр таблиці по горизонталі */
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: bold;
+    border-collapse: collapse; /* щоб border-radius та межі виглядали нормально */
+    text-align: center; /* текст по центру для всіх комірок */
+}
+
+th {
+    background-color: #D8CFA5;
+    color: #976B31;
+    text-align: left; /* залишаємо текст th зліва */
+    padding: 10px;
+    border: 3px solid #C2A85D;
+    border-radius: 5px;
+}
+
+td {
+    padding: 10px;
+    text-align: center; /* центр для td */
+    border: 3px solid #C2A85D;
+    border-radius: 5px;
+}
+
+td:hover {
+    background-color: #D8CFA5;
+}
         
     </style>
     <body>
