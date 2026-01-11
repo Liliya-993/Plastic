@@ -350,13 +350,8 @@
 /*Адаптація під телефон*/
         
         @media (max-width: 768px) {
-            .main {
-                padding-top: 20px;
-            }
-        
             .white-bg {
                 width: 90%;
-                margin-top: 80px;
                 padding: 20px;
             }
             
@@ -390,6 +385,14 @@
             .footer-info-code {
                 width: 100%;
             }
+
+            .footer-logo img {
+                max-width: 14%;
+            }
+            
+            .footer-logo img:active {
+                transform: scale(0.9) rotate(-2deg);
+            }
         
             /* ---------- SIDE MENU ---------- */
             .side-nav {
@@ -407,11 +410,28 @@
                 width: 60px;
                 bottom: 20px;
                 left: 20px;
+                background-color: #1A2233;
             }
         
             h3 {
                 padding-left: 0;
                 text-align: center;
+            }
+            
+            .buttons-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .logo img {
+                width: 10%;
+                height: 10%;
+                left: 30px;
+                top: 30px;
+            }
+
+            .title img {
+                padding-bottom: 15%;
+                position: absolute;
             }
         }
         
