@@ -346,12 +346,19 @@
             padding-left: 30px;
             font-size: 23px;
         }
-
+        .illustration-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
         .illustration {
             max-width: 65%;
-            padding-left: 50%;
+            grid-column: span 2;
         }
-        .illustration-wrap .tooltip-text {
+        .illustration-wrap 
+        .tooltip-text {
             left: 0%;
         }
 /*Адаптація під телефон*/
