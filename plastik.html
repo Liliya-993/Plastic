@@ -1008,6 +1008,40 @@
                           <td>Шахи, кубики, фігурки для дітей</td>
                         </tr>
                     </table>
+                <h3 class="section-title">Перетворимо кришечки на щось корисне!</h3>
+                    <form class="search-form">
+                        <fieldset class="search-form___wrap">
+                            <p class="search-form___info">
+                                <input
+                                    type="number"
+                                    id="inputValue"
+                                    name="user-like-to-do"
+                                    class="search-form___field"
+                                    placeholder="Скільки кг пластику потрібно?"
+                                />
+                            </p>
+
+                            <p class="search-form___info">
+                                <!-- Поле для виводу результату -->
+                                <label for="resultField"></label>
+                                <input
+                                    type="text"
+                                    id="resultField"
+                                    class="search-form___field2"
+                                    readonly
+                                    placeholder="Тут з'явиться кількість кришечок"
+                                />
+                            </p>
+
+                            <button
+                                type="button"
+                                class="search-form___button"
+                                onclick="calculate()"
+                            >
+                                Обчислити
+                            </button>
+                        </fieldset>
+                    </form>
             </div>
             <!-- Кнопки -->
             <div class="buttons-wrap">
@@ -1139,5 +1173,18 @@
             },
             retina_detect: true,
         });
+
+        function calculate() {
+            const constant = 0.0018; // Стале число
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+        
+            if (isNaN(inputValue)) {
+                document.getElementById("resultField").value = "Некоректне число";
+                return;
+            }
+        
+              x = document.getElementById("inputValue").value*0.0018;
+              document.getElementById("resultField").innerText = "Кількість пластику: "+x+" кг";
+        }
     </script>
 </html>
