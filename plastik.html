@@ -1056,7 +1056,7 @@
                                     id="inputValue"
                                     name="user-like-to-do"
                                     class="search-form___field"
-                                    placeholder="Скільки кг пластику потрібно?"
+                                    placeholder="Кількість пляшок: "
                                 />
                             </p>
 
@@ -1064,7 +1064,7 @@
                                 <!-- Поле для виводу результату -->
                                 <label for="resultField"></label>
                                 <p id="resultField" class="search-form___field2">
-                                    Тут з'явиться кількість кришечок
+                                    Тут з'явиться маса пластику в кг
                                 </p>
                             </p>
 
@@ -1210,8 +1210,9 @@
         });
 
         function calculate() {
-            if (isNaN(inputValue)) {
-                document.getElementById("resultField").value = "Некоректне число";
+            const value = document.getElementById("inputValue").value;
+            if (isNaN(value) || value === "") {
+                document.getElementById("resultField").innerText = "Некоректне число";
                 return;
             }
               x = document.getElementById("inputValue").value*0.02;
