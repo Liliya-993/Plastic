@@ -374,7 +374,43 @@
             height: 315px;
             border-radius: 15px;
         }
-            
+
+        .search-form {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 400px;
+        }
+        
+        .search-form___wrap {
+            border: none;
+            padding: 0;
+        }
+        
+        .search-form___info {
+            margin-bottom: 10px;
+        }
+        
+        .search-form___field,
+        .search-form___field2 {
+            width: 100%;
+            font-size: 16px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        
+        .search-form___button {
+            font-size: 16px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #51a556;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .search-form___button:hover {
+            background-color: #36793b;
+        }
 /*Адаптація під телефон*/
         
         @media (max-width: 768px) {
@@ -1024,13 +1060,9 @@
                             <p class="search-form___info">
                                 <!-- Поле для виводу результату -->
                                 <label for="resultField"></label>
-                                <input
-                                    type="text"
-                                    id="resultField"
-                                    class="search-form___field2"
-                                    readonly
-                                    placeholder="Тут з'явиться кількість кришечок"
-                                />
+                                <p id="resultField" class="search-form___field2">
+                                    Тут з'явиться кількість кришечок
+                                </p>
                             </p>
 
                             <button
