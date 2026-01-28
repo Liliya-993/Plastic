@@ -1047,6 +1047,9 @@
                 <h3 class="section-title">Перетворимо кришечки на щось корисне!</h3>
                     <form class="search-form">
                         <fieldset class="search-form___wrap">
+                            <p>
+                                Для однієї пластикової пляшки 0,75 л, без етикетки, але з кришкою, можна отримати приблизно 20 грамів пластику, придатного для 3D-друку.
+                                Це усереднене й реалістичне значення для PET-пляшки стандартної товщини і поліпропіленової кришки.</p>
                             <p class="search-form___info">
                                 <input
                                     type="number"
@@ -1207,15 +1210,11 @@
         });
 
         function calculate() {
-            const constant = 0.0018; // Стале число
-            const inputValue = parseFloat(document.getElementById("inputValue").value);
-        
             if (isNaN(inputValue)) {
                 document.getElementById("resultField").value = "Некоректне число";
                 return;
             }
-        
-              x = document.getElementById("inputValue").value*0.0018;
+              x = document.getElementById("inputValue").value*0.02;
               document.getElementById("resultField").innerText = "Кількість пластику: "+x+" кг";
         }
     </script>
