@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Пластик</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom, #304A29, #668751);
+            color: #F8F9ED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .white-bg {
+            background-color: #F8F9ED;
+            width: 65%;
+            justify-content: flex-start;
+            padding: 30px 30px 50px 30px;
+            border-radius: 15px;
+            color:#4C643B;
+            margin-top: 300px;
+
+            /*display: flex;
+            flex-direction: column;
+            align-items: center;*/
+        }
+
+        .white-bg p {
+            padding: 5px 40px 5px 30px;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 150px;
+            padding-bottom: 20px;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+        }
+        
+        .title img {
+            padding-bottom: 200px;
+            position: absolute;
+            top: 30px;
+            right: 15%;
+        }
+        
+        .intro-title {
+            font-weight: 900;
+            margin-top: 20px;
+            max-width: 1500px;
+            text-align: center;
+            font-size: 100px;
+            color: #F8F9ED;
+        }
+        
+        .buttons-wrap {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 1000px; /* фіксована ширина для симетрії */
+            margin-bottom: 150px;
+        }
+
+        .buttons-wrap a {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+
+        .buttons-wrap a:hover {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba(26, 34, 51, 0.75);
+            padding: 20px 16px; /* вертикальні/горизонтальні відступи */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #F8F9ED;
+            text-align: center;
+        }
+
+        .footer-logo,
+        .footer-social-medias,
+        .footer-info-code {
+            width: 30%;
+        }
+        
+        .footer h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #F8F9ED;
+        }
+        
+        .footer a {
+            color: #F8F9ED;
+            text-decoration: none;
+            text-underline-offset: 3px;
+        }
+        
+        .footer a:hover {
+            opacity: 0.5;
+        }
+        
+        .footer-logo img {
+            max-width: 180px;
+        }
+        
+        .footer-logo img:active {
+            transform: scale(0.9) rotate(-2deg);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 500px;
+            background-color: #304A29;
+            color: #F8F9ED;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        
+            /* Позиціонування підказки */
+            position: absolute;
+            z-index: 999;
+            bottom: 102%; /* Відступ зверху */
+            /* Анімаційний ефект */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 350px;
+        }
+        
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box; /* дуже важливо, щоб padding не “ріс” за межі */
+            padding: 30px;
+            margin: 0 auto; /* центр слайда в контейнері */
+        }
+        
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .plastic-card-pic {
+            width: 70px;
+        }
+        
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            color: #4C643B;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #4C643B;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto; /* центр таблиці по горизонталі */
+            font-size: 15px;
+            line-height: 22px;
+            font-weight: bold;
+            border-collapse: collapse;  /*щоб border-radius та межі виглядали нормально */
+            text-align: center; /* текст по центру для всіх комірок */
+        }
+
+        th {
+            background-color: #D8CFA5;
+            color: #976B31;
+            text-align: left; /* залишаємо текст th зліва */
+            padding: 10px;
+            border: 3px solid #C2A85D;
+        }
+        
+        td {
+            padding: 10px;
+            text-align: center; /* центр для td */
+            border: 3px solid #C2A85D;
+        }
+        
+        td:hover {
+            background-color: #D8CFA5;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 35px;
+            line-height: 42px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .section-title::after {
+            display: block;
+            content: "";
+            width: 353px;
+            height: 3px;
+            background-color: #8FA87A;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 28px;
+            margin-bottom: 15px;
+        }
+
+        .plastic-card-title {
+            width: 100%;
+            font-weight: 420px;
+            font-size: 25px;
+            line-height: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: #F8F9ED;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -260px;
+            width: 260px;
+            height: 100vh;
+            background-color: #1A2233;
+            padding-top: 80px;
+        
+            transition: right 0.4s ease-in-out; 
+            z-index: 1000;
+        }
+        
+        .side-nav.open {
+            right: 0;
+        }
+        
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .side-nav li {
+            margin: 10px 0;
+        }
+        
+        .side-nav a {
+            display: block;
+            padding: 12px 20px;
+            color: #F8F9ED;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .side-nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .warning {
+            border: 2px solid red;
+            border-radius: 5px;
+            max-width: 75%;
+            margin:auto;
+        }
+
+        .Up-to-top {
+            position: fixed;
+            width: 80px;
+            bottom: 30px;
+            left: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .Up-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        h3 {
+            padding-left: 30px;
+            font-size: 23px;
+        }
+        .illustration-wrap {
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 40px;
+            cursor: pointer;
+            
+           /* display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }*/
+        .illustration {
+            /*grid-column: span 1/2;
+            max-width: 700px;*/
+            width: 600px;
+        }
+        .double-illustration-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+        .video-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        .video {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 15px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-form___wrap {
+            max-width: 600px;
+            width: 100%;
+            padding: 24px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Обгортка input / result */
+        .search-form___info {
+            margin-bottom: 16px;
+        }
+        
+        /* Input */
+        .search-form___field {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background-color: #f8f9ed;
+            color: #2c3e2f;
+        }
+        
+        /* Результат */
+        .search-form___field2 {
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(102, 135, 81, 0.25);
+            color: #f8f9ed;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* Кнопка */
+        .search-form___button {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+        
+        .search-form___button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+        
+        .search-form___button:active {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+            .chemistry {
+                text-align: center;
+            }
+/*Адаптація під телефон*/
+        
+        @media (max-width: 768px) {
+            .white-bg {
+                width: 80%;
+                padding: 20px;
+                margin-top: 50%;
+            }
+            
+            .swiper {
+                height: auto;
+            }
+        
+            .swiper-slide {
+                padding: 20px 10px;
+            }
+        
+            /* ---------- TABLE ---------- */
+            table {
+                width: 100%;
+                font-size: 13px;
+            }
+        
+            th, td {
+                padding: 6px;
+            }
+        
+            /* ---------- SIDE MENU ---------- */
+            .menu-toggle {
+                top: 25px;
+                right: 25px;
+            }
+            
+            .side-nav {
+                width: 80%;
+                transform: translateX(100%);
+                right: 0;
+                transition: transform 0.35s ease-in-out;
+            }
+        
+            .side-nav.open {
+                transform: translateX(0);
+            }
+        
+            /* ---------- TOOLTIP ---------- */
+            .tooltip .tooltip-text {
+                width: 220px;
+                font-size: 13px;
+            }
+        
+            /* ---------- UP BUTTON ---------- */
+            .Up-to-top {
+                width: 60px;
+                bottom: 20px;
+                left: 20px;
+                background-color: #1A2233;
+                border-radius: 50%;
+            }
+        
+            h3 {
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .buttons-wrap {
+                grid-template-columns: 1fr;
+                width: 90%;
+                margin: 10 auto 60px;
+            }
+
+            .logo img {
+                width: 60%;
+                height: 60%;
+                left: 50%;
+                top: 30px;
+            }
+
+            .title img {
+                padding-bottom: 5%;
+                position: absolute;
+                width: 80%;
+                right: 10%;
+                margin-top: 50%;
+            }
+
+            .section-title::after {
+                width: 150px;
+                height: 3px;
+            }
+        }
+        
+    </style>
+    </head>
+    <body>
+        <!-- Контейнер для particles.js -->
+        <div
+            id="particles-js"
+            style="
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            "
+        ></div>
+
+        <!-- Головний блок -->
+        <main class="main">
+            <a href="#top">
+                    <svg
+                        class="Up-to-top"
+                        viewBox="0 0 70 70"
+                        onclick="scrollToTop(event)"
+                    >
+                        <circle
+                            cx="35"
+                            cy="35"
+                            r="33"
+                            fill="none"
+                            stroke="#F8F9ED"
+                            stroke-width="3"
+                        />
+                        <path
+                            d="M 35 20 L 25 32 L 30 32 L 30 48 L 40 48 L 40 32 L 45 32 Z"
+                            fill="#F8F9ED"
+                        />
+                    </svg>
+                </a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav class="side-nav" id="sideNav">
+                <ul>
+                    <li><a href="#start">Ввідна частина</a></li>
+                    <li><a href="#classes">Види пластику (особливості, застереження, базова інформація)</a>
+                        <ul>
+                            <li><a href="#time">Орієнтовна тривалість розкладання основних видів пластику</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#problem">Проблема, яку створює пластик</a></li>
+                    <li><a href="#ansver">Рішення проблеми</a></li>
+                </ul>
+            </nav>
+            <!-- Логотип -->
+            <div class="logo">
+                <img src="./img/svg/logo-new.svg" alt="Logo" />
+            </div>
+            <div class="title">
+                <img src="./img/svg/title-svg.svg" alt="Title" />
+            </div>
+            <div class="white-bg">
+                <h2 class="section-title" id="start">Ввідна частина</h2>
+                <p>
+                    Пластикове забруднення стало однією з наймасштабніших глобальних
+                    екологічних криз. Велика частина пластмасових відходів, викинутих
+                    людиною, не розкладається природним шляхом і накопичується в довкіллі, 
+                    особливо в океанах та річках. Ці матеріали завдають шкоди не лише
+                    дикій природі, але й здоров’ю людини.
+                </p>
+                <div class="illustration-wrap">
+                    <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                        <img class="illustration" src="./img/Пластикове-забруднення1.jpg"/>
+                    </a>
+                </div>
+                <p>
+                    Вода, повітря, ґрунт і навіть продукти харчування містять частинки 
+                    пластику—від великих уламків до мікро- і наночастинок, які утворюються
+                    внаслідок розпаду більших предметів. У 2025–2026 роках наукові дослідження
+                    підтвердили, що мікропластик і нанопластик можуть проникати в тканини 
+                    організмів, накопичуватися в органах і навіть проходити через плаценту у 
+                    людини та тварин.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: Центр громадського здоров'я МОЗ України.
+                        </span>
+                    </span>
+                </p>
+                <h2 class="section-title" id="classes">Види пластику (особливості, застереження, базова інформація)</h2>
+                <p>
+                    Пластик — це широка група синтетичних полімерів, які виробляються здебільшого з нафти й природного газу. У побуті найчастіше зустрічаються такі види:
+                </p>
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic1.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                PET (поліетилен терефталат)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Широко застосовується для виготовлення пляшок для напоїв і харчової упаковки.
+                                Він відносно легкий і прозорий, але під впливом ультрафіолету та тепла
+                                поступово руйнується, утворюючи мікропластик і виділяючи хімічні домішки.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic2.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                HDPE (поліетилен високої щільності)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Використовується для каністр, контейнерів, іграшок і пляшок для побутової
+                                хімії. Цей матеріал дуже стійкий і майже не розкладається в природі, проте
+                                вважається одним із найбільш придатних для повторної переробки.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic3.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                PVC (полівінілхлорид)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Є одним із найбільш проблемних видів пластику. Його застосовують у будівництві,
+                                виробництві кабелів, підлогових покриттів і штучної шкіри. Він містить хлор та 
+                                численні добавки, які з часом можуть виділяти токсичні сполуки, особливо під 
+                                дією тепла та світла.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic4.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                LDPE (поліетилен низької щільності)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Використовується для пластикових пакетів, плівок і упаковки. Він легко деформується,
+                                швидко подрібнюється на мікропластик, але надзвичайно повільно зникає з навколишнього
+                                середовища.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic5.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                PP (поліпропілен)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Застосовується для кришечок, харчових контейнерів і багаторазового посуду. У ґрунті він 
+                                розкладається швидше за інші види пластику, проте під час деградації може виділяти 
+                                леткі органічні сполуки*.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic6.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                PS (полістирол)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                Відомий як основний матеріал одноразового посуду та пінопласту. Він легко кришиться,
+                                швидко потрапляє у водойми і вважається одним із головних джерел мікропластику в океанах.
+                            </p>
+                        </div>
+                        <div class="swiper-slide plastic-info-card">
+                            <div class="plastic-card-pic">
+                                <img src="./img/svg/plastic7.svg" class="plastic-card-img"/>
+                            </div>
+                            <h3 class="plastic-card-title">
+                                Other (інші)
+                            </h3>
+                            <p class="plastic-cart-desc">
+                                До категорії Other (7) належать багатошарові та композитні пластики, зокрема полікарбонат,
+                                нейлон, біопластики з домішками та матеріали типу Tetra Pak. Вони особливо проблемні, 
+                                оскільки майже не піддаються переробці через складну структуру.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+        
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <span class="tooltip">[*]
+                    <span class="tooltip-text">
+                        Леткі органічні сполуки - це широкий клас хімічних речовин на основі вуглецю,
+                        які легко випаровуються (газують) при кімнатній температурі, забруднюючи повітря
+                        та впливаючи на здоров'я, і містяться в фарбах, лаках, побутовій хімії, 
+                        автомобільних вихлопах та багатьох інших продуктах.
+                    </span>
+                </span>
+                <section class="plastic-table">
+                    <h3 id="time">Орієнтовна тривалість розкладання основних видів пластику</h3>
+                    <table>
+                        <tr>
+                            <th>Тип пластику</th>
+                            <th>Приблизний час розкладання</th>
+                        </tr>
+                        <tr>
+                            <td>PET</td>
+                            <td>400–450 років</td>
+                        </tr>
+                        <tr>
+                            <td>HDPE</td>
+                            <td>понад 500–1000 років</td>
+                        </tr>
+                        <tr>
+                            <td>PVC</td>
+                            <td>понад 1000 років</td>
+                        </tr>
+                        <tr>
+                            <td>LDPE</td>
+                            <td>300–500 років</td>
+                        </tr>
+                        <tr>
+                            <td>PP</td>
+                            <td>20–30 років (залежить від домішок)</td>
+                        </tr>
+                        <tr>
+                            <td>PS</td>
+                            <td>100–300 років</td>
+                        </tr>
+                        <tr>
+                            <td>Other (7)</td>
+                            <td>від сотень до тисяч років, часто невизначено</td>
+                        </tr>
+                    </table>
+                </section>
+                <h2 class="section-title" id="problem">Проблема, яку створює пластик</h2>
+                <p>
+                    Пластикові відходи створюють серйозну загрозу для екосистем. Великі фрагменти пластику травмують
+                    і вбивають тварин, а дрібні частинки вбудовуються в харчові ланцюги. Мікропластик споживається
+                    планктоном, після чого переходить до риб, морських ссавців і зрештою до людини.
+                </p>
+                <div class="double-illustration-wrap">
+                    <div class="illustration-wrap">
+                        <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                            <img class="illustration" src="./img/turtle_eating_bag.jpg"/>
+                        </a>
+                    </div>
+                    <div class="illustration-wrap">
+                        <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                            <img class="illustration" src="./img/Чай.jpg"/>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    У людини мікропластик потрапляє в організм через їжу, воду та повітря. Сучасні дослідження виявили
+                    його у крові, легенях, печінці, мозку та плаценті. Особливу небезпеку становить здатність пластикових
+                    частинок переносити токсичні речовини, такі як важкі метали, фталати, бісфенол А та пер- і поліфторовані
+                    сполуки. Вони можуть спричиняти запальні процеси, гормональні порушення, окисний стрес клітин і
+                    потенційно підвищувати ризик серцево-судинних та онкологічних захворювань.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: RSC Publishing.
+                        </span>
+                    </span>
+                </p>
+                <h2 class="section-title" id="ansver">Рішення проблеми</h2>
+                <p class="warning">
+                    Варто зазначити що вся інформаціє є зібраною з різних джерел і може нагадувати вітраж з різнобарвних часточок. 
+                    Автор не стверджує що все сказане є истиною і дійсно працює, а лише доносить інформацію яку знайшов в інтернеті.
+                </p>
+                <h3>Що таке мікропластик і нанопластик?</h3>
+                <p>
+                    Пластикові відходи навколишнього середовища поступово розпадаються під дією сонця, механічних сил, температури 
+                    та вологи не на безпечні речовини, а на крихітні частинки — мікропластик (розмір менше 5 мм) і нанопластик (розмір 100 нм).
+                    Ці частинки є надзвичайно стійкими й накопичуються в атмосфері, воді, ґрунтах та харчових ланцюгах.
+                </p>
+                <p>
+                    Люди можуть зазнавати контакту з цими частинками кількома шляхами:
+                </p>
+                <ul>
+                    <li>
+                        Інгестія (ковтання) — через воду, продукти харчування
+                        (риба, морепродукти, овочі) і напої. Частинки пластику
+                        вже регулярно знаходять у питній воді та продуктах харчування. 
+                    </li>
+                    <li>
+                        Інгаляція (вдихання) — мікропластик присутній у повітрі, особливо
+                        в містах і промислових зонах. 
+                    </li>
+                    <li>
+                        Дермальний контакт (через шкіру) — наразі показаний як незначний
+                        шлях, але може мати значення в складних технологічних процесах.
+                    </li>
+                </ul>
+                <p>
+                    Ці частинки не залишаються тільки у травному тракті чи легенях: вони можуть переміщатися 
+                    через слизову та епітелій, потрапляти в кровоносну та лімфатичну системи й далі 
+                    переміщуватися по всьому організму.
+                </p> 
+                <h3>Як з'являється пластик?</h3>
+                <p>
+                    Поліетилен утворюється в результаті реакції полімеризації етилену. Під дією високого тиску,
+                    температури та каталізаторів молекули етилену з подвійним зв’язком з’єднуються у довгі ланцюги.
+                    Подвійний зв’язок розривається, і атоми вуглецю формують нові одинарні зв’язки з сусідніми 
+                    молекулами, утворюючи полімер.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: ScienceDirect.
+                        </span>
+                    </span>
+                </p>
+                <p class="chemistry">
+                    n CH₂=CH₂ → (–CH₂–CH₂–)ₙ
+                </p>
+                <p>
+                    Поліпропілен синтезується подібним чином, але вихідною речовиною є пропен. У процесі полімеризації
+                    зберігається бічна метильна група –CH₃, яка надає матеріалу більшої жорсткості та термостійкості 
+                    порівняно з поліетиленом.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: ScienceDirect.
+                        </span>
+                    </span>
+                </p>
+                <p class="chemistry">
+                    n CH₂=CH–CH₃ → (–CH₂–CH(CH₃)–)ₙ
+                </p>
+                <p>
+                    Поліетилентерефталат утворюється шляхом реакції поліконденсації між терефталевою кислотою та етиленгліколем.
+                    На відміну від поліетилену, тут під час утворення полімеру виділяється побічний продукт — вода або метанол, 
+                    що є характерною ознакою поліконденсаційних реакцій.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: ScienceDirect.
+                        </span>
+                    </span>
+                </p>
+                <p class="chemistry">
+                    n HO–CH₂–CH₂–OH + n HOOC–C₆H₄–COOH → (–O–CH₂–CH₂–O–CO–C₆H₄–CO–)ₙ + 2n H₂O
+                </p>
+                <p>
+                    Полівінілхлорид утворюється в результаті полімеризації вінілхлориду. Наявність атома хлору в кожній ланці полімерного 
+                    ланцюга зумовлює підвищену токсичність матеріалу та його стійкість до біологічного розкладання.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: ScienceDirect.
+                        </span>
+                    </span>
+                </p>
+                <p class="chemistry">
+                    n CH₂=CHCl → (–CH₂–CHCl–)ₙ
+                </p>
+                <p>
+                    Полістирол синтезується з мономеру стиролу. Ароматичне бензенове кільце в структурі полімеру робить матеріал крихким
+                    і сприяє утворенню мікропластику під дією сонячного випромінювання.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерело інформації: ScienceDirect.
+                        </span>
+                    </span>
+                </p>
+                <p class="chemistry">
+                    n CH₂=CH–C₆H₅ → (–CH₂–CH(C₆H₅)–)ₙ
+                </p>
+                <div class="video-wrap">
+                    <iframe 
+                        class="video"
+                        src="https://www.youtube.com/embed/1dt5xpz77iE?si=Dh6mOna6D-bt0Tvt" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3>Переробка пластику</h3>
+                <p>
+                    Переробка пластику сьогодні є одним із ключових шляхів зменшення його негативного
+                    впливу на довкілля. Найпоширенішим методом залишається механічна переробка, за якої
+                    пластикові відходи сортують, подрібнюють, миють і переплавляють. Під час нагрівання
+                    полімер не зникає, а переходить у в’язкотекучий стан. Це можливо тому, що більшість
+                    побутових пластиків є термопластами, тобто їхні макромолекули не з’єднані жорсткими 
+                    поперечними зв’язками. При нагріванні міжмолекулярні взаємодії послаблюються, і 
+                    пластик можна формувати повторно без руйнування ланцюгів.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерела інформації: Plastics Industry, Britannica.
+                        </span>
+                    </span>
+                </p>
+                <div class="video-wrap">
+                    <iframe
+                        class="video"
+                        src="https://www.youtube.com/embed/sQKOL1izDO0?si=rdvUIAK68eEbBvh3"
+                        title="YouTube video player"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p>
+                    Однак механічна переробка має обмеження, адже з кожним циклом якість матеріалу погіршується.
+                    Саме тому велике значення має хімічна переробка, яка дозволяє розкладати пластик до простіших
+                    молекул. Один із прикладів — деполімеризація поліетилентерефталату, який використовується для 
+                    пляшок. Під час хімічної переробки ці ланцюги розщеплюються з утворенням вихідних речовин, які
+                    можна повторно використати для синтезу нового пластику.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерела інформації: ROYAL SOCIETY OF CHEMISTRY.
+                        </span>
+                    </span>
+                </p>
+                <div class="video-wrap">
+                    <iframe
+                        class="video"
+                        src="https://www.youtube.com/embed/2pw3CqceHvg?si=1UY5ZJ00cl7UiiK0" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-wrap">
+                    <iframe 
+                        class="video"
+                        src="https://www.youtube.com/embed/1uTswJzseMQ?si=mYLf6s_8l08sKcMs"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p>
+                    Ще одним напрямом є термохімічна переробка, зокрема піроліз. У цьому процесі пластик нагрівають до високих температур
+                    без доступу кисню. Полімерні ланцюги руйнуються, утворюючи суміш газів, рідких вуглеводнів і твердого залишку.
+                    Цей метод дозволяє переробляти навіть сильно забруднений або змішаний пластик.
+                    <span class="tooltip">[?]
+                        <span class="tooltip-text">
+                            Джерела інформації: iea.org.
+                        </span>
+                    </span>
+                </p>
+                <div class="video-wrap">
+                    <iframe 
+                        class="video"
+                        src="https://www.youtube.com/embed/RIT3UyoDE9Q?si=NnZhpWS-mWu1ARu-" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3>3D друк</h3>
+                <p>
+                    Окрему роль у вирішенні проблеми пластику відіграє 3D-друк. Перероблений пластик можна перетворювати на філамент для
+                    3D-принтерів. Таким чином пластикові відходи отримують друге життя у вигляді деталей, корпусів або навчальних моделей,
+                    що зменшує потребу у виробництві нового пластику. Для 3D-друку найчастіше використовують термопластики, здатні 
+                    багаторазово плавитися без повного руйнування структури. До них належать PLA, PET-G та ABS. Перероблений пластик 
+                    подрібнюють, очищають, висушують і переплавляють у тонку нитку — філамент, який надалі застосовується для друку. Такий
+                    підхід дозволяє локально переробляти відходи без складних промислових процесів. 
+                </p>
+                <p>
+                    Особливу увагу привертає використання пластикових пляшок з PET, які є одним з найпоширеніших видів побутових відходів. 
+                    З них виготовляють філамент для 3D-друку, що дає змогу перетворювати звичайне сміття на корисні предмети. Це знижує навантаження на сміттєзвалища та скорочує
+                    кількість пластику, який потрапляє в довкілля. 3D-друк активно застосовується у волонтерських та освітніх проєктах. 
+                    За допомогою переробленого пластику друкують деталі для протезів, елементи медичного обладнання, інструменти, а також 
+                    навчальні моделі для шкіл і університетів. Така діяльність поєднує екологічну користь із соціальною та сприяє поширенню 
+                    ідей відповідального споживання. 
+                </p>
+                <p>
+                    Водночас технологія має певні обмеження. Після кількох циклів переплавлення полімерні 
+                    ланцюги стають коротшими, що може призводити до зниження міцності виробів. Тому в наукових дослідженнях розглядаються 
+                    способи покращення властивостей переробленого філаменту, зокрема шляхом додавання стабілізаторів або змішування його 
+                    з первинним пластиком. Таким чином, 3D-друк не є повним розв’язанням проблеми пластикового забруднення, проте він є ефективним
+                    інструментом зменшення кількості відходів, розвитку кругової економіки та формування екологічної свідомості на локальному рівні.
+                </p>
+                <h3> Подаруймо друге життя нашому сміттю!</h3>
+                <p>
+                    Навіть з ваших пластикових пляшок можна отримати корисні речі за допомогою 3D‑друку. Після переробки вони стають філаментом, з якого можна
+                    надрукувати безліч корисних речей: від протезів та медичних пристосувань до предметів побуту та навчальних моделей. Кількість пляшок,
+                    необхідна для друку, залежить від розміру виробу та товщини філаменту, але навіть одна пляшка може дати матеріал для створення невеликої корисної деталі.
+                </p>
+                <table>
+                        <tr>
+                          <th>Виріб</th>
+                          <th>Приблизна кількість пляшок (0,5–1 л)</th>
+                          <th>Призначення / Примітка</th>
+                        </tr>
+                        <tr>
+                          <td>Протез руки</td>
+                          <td>5–6</td>
+                          <td>Повний функціональний протез руки для дорослого або підлітка</td>
+                        </tr>
+                        <tr>
+                          <td>Протез ноги</td>
+                          <td>7–10</td>
+                          <td>Функціональний протез ноги для дорослого, включно зі стопою</td>
+                        </tr>
+                        <tr>
+                          <td>Вази / горщики для рослин</td>
+                          <td>1</td>
+                          <td>Декоративні або для домашнього саду</td>
+                        </tr>
+                        <tr>
+                          <td>Кухонні лопатки</td>
+                          <td>0,5</td>
+                          <td>Пластикові кухонні інструменти</td>
+                        </tr>
+                        <tr>
+                          <td>Корпуси для електроніки</td>
+                          <td>2–3</td>
+                          <td>Для Arduino, Raspberry Pi, ламп</td>
+                        </tr>
+                        <tr>
+                          <td>Кнопки та кріплення</td>
+                          <td>0,5</td>
+                          <td>Для побутових приладів та меблів</td>
+                        </tr>
+                        <tr>
+                          <td>Органайзери / підставки</td>
+                          <td>1</td>
+                          <td>Для канцелярії та дрібниць</td>
+                        </tr>
+                        <tr>
+                          <td>Дитячі навчальні моделі</td>
+                          <td>0,5–1</td>
+                          <td>Геометричні форми, алфавіт, цифри</td>
+                        </tr>
+                        <tr>
+                          <td>Тримачі для кабелів</td>
+                          <td>0,2</td>
+                          <td>Для упорядкування проводів</td>
+                        </tr>
+                        <tr>
+                          <td>Деталі для велосипедів</td>
+                          <td>1–2</td>
+                          <td>Наприклад, захист ланцюга або кріплення</td>
+                        </tr>
+                        <tr>
+                          <td>Лійки / контейнерні пристрої</td>
+                          <td>1</td>
+                          <td>Для кухні або лабораторних потреб</td>
+                        </tr>
+                        <tr>
+                          <td>Настільні ігри / фігурки</td>
+                          <td>0,5–1</td>
+                          <td>Шахи, кубики, фігурки для дітей</td>
+                        </tr>
+                    </table>
+                <h3 class="section-title">Перетворимо кришечки на щось корисне!</h3>
+                    <form class="search-form">
+                        <fieldset class="search-form___wrap">
+                            <p>
+                                Для однієї пластикової пляшки 0,75 л, без етикетки, але з кришкою, можна отримати приблизно 20 грамів пластику, придатного для 3D-друку.
+                                Це усереднене й реалістичне значення для PET-пляшки стандартної товщини і поліпропіленової кришки.</p>
+                            <p class="search-form___info">
+                                <input
+                                    type="number"
+                                    id="inputValue"
+                                    name="user-like-to-do"
+                                    class="search-form___field"
+                                    placeholder="Кількість пляшок: "
+                                />
+                            </p>
+
+                            <div class="search-form___info">
+                                <!-- Поле для виводу результату -->
+                                <label for="resultField"></label>
+                                <p id="resultField" class="search-form___field2">
+                                    Тут з'явиться маса пластику в кг
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="search-form___button"
+                                onclick="calculate()"
+                            >
+                                Обчислити
+                            </button>
+                        </fieldset>
+                    </form>
+            </div>
+            <!-- Кнопки -->
+            <div class="buttons-wrap">
+                <a href="index.html" class="shift-button">Назад</a>
+                <a href="plastik.html" class="shift-button">Про Пластик</a>
+                <a href="#" class="shift-button">Далі буде</a>
+            </div>
+            <div class="footer">
+                <div class="footer-info-code">
+                    <h1>Джерела:</h1>
+                    <p>---</p>
+                    <h1>Запозичений код</h1>
+                    <p>
+                        Партікли взяті з:
+                        <a href="https://vincentgarreau.com/particles.js/">particles.js</a>
+                    </p>
+                </div>
+                <div class="footer-logo">
+                    <img onclick="RandomMashineSound()" src="./img/svg/v2.svg" alt="UltraKill"/>
+                    <p>© 2025 EcoLan. Всі права захищені.</p>
+                </div>
+                <div class="footer-social-medias">
+                    <a href="https://www.instagram.com/web_goblin_/">Інстаграм: web_goblin_</a>
+                    <p>Gmail: </p>
+                </div>
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </body>
+    <script>
+        function scrollToTop(event) {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        
+        function toggleMenu() {
+            nav = document.getElementById("sideNav");
+            nav.classList.toggle("open");
+        }
+        
+        const swiper = new Swiper(".swiper", {
+            // Optional parameters
+            direction: "horizontal",
+            loop: true,
+        
+            // If we need pagination
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        
+            // Navigation arrows
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+        
+        sounds = [
+            "./Звуки-MP3-для-проекту/1.mp3",
+            "./Звуки-MP3-для-проекту/2.mp3",
+            "./Звуки-MP3-для-проекту/3.mp3",
+            "./Звуки-MP3-для-проекту/4.mp3",
+            "./Звуки-MP3-для-проекту/5.mp3",
+            "./Звуки-MP3-для-проекту/6.mp3"
+        ];
+        function RandomMashineSound(){
+            randomIndex = Math.floor(Math.random() * sounds.length);
+            audio = new Audio(sounds[randomIndex]);
+            audio.volume = 0.8;
+            audio.play();
+        };
+        
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 60,
+                    density: { enable: true, value_area: 800 },
+                },
+                color: { value: "#ffffff" },
+                shape: {
+                    type: "circle",
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 140,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 },
+                },
+            },
+            retina_detect: true,
+        });
+
+        function calculate() {
+            const value = document.getElementById("inputValue").value;
+            if (isNaN(value) || value === "") {
+                document.getElementById("resultField").innerText = "Некоректне число";
+                return;
+            }
+              x = document.getElementById("inputValue").value*0.02;
+              document.getElementById("resultField").innerText = "Кількість пластику: "+x+" кг";
+        }
+    </script>
+</html>
