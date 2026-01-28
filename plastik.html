@@ -419,16 +419,18 @@
         
         /* Кнопка */
         .search-form___button {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #4f7f52, #6fa36a);
-            color: #f8f9ed;
-            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
             font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
         }
         
         .search-form___button:hover {
@@ -437,8 +439,9 @@
         }
         
         .search-form___button:active {
-            transform: translateY(0);
-            box-shadow: none;
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
         }
 /*Адаптація під телефон*/
         
