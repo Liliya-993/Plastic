@@ -363,6 +363,13 @@
             /*grid-column: span 1/2;*/
             max-width: 700px;
         }
+        .double-illustration-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
         .video-wrap {
             display: flex;
             justify-content: center;
@@ -779,15 +786,17 @@
                     і вбивають тварин, а дрібні частинки вбудовуються в харчові ланцюги. Мікропластик споживається
                     планктоном, після чого переходить до риб, морських ссавців і зрештою до людини.
                 </p>
-                <div class="illustration-wrap">
-                    <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
-                        <img class="illustration" src="./img/turtle_eating_bag.jpg"/>
-                    </a>
-                </div>
-                <div class="illustration-wrap">
-                    <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
-                        <img class="illustration" src="./img/Чай.jpg"/>
-                    </a>
+                <div class="double-illustration-wrap">
+                    <div class="illustration-wrap">
+                        <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                            <img class="illustration" src="./img/turtle_eating_bag.jpg"/>
+                        </a>
+                    </div>
+                    <div class="illustration-wrap">
+                        <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                            <img class="illustration" src="./img/Чай.jpg"/>
+                        </a>
+                    </div>
                 </div>
                 <p>
                     У людини мікропластик потрапляє в організм через їжу, воду та повітря. Сучасні дослідження виявили
