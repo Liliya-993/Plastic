@@ -1,209 +1,316 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Пластик в таблицях</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        />
-        <link rel="stylesheet" href="./CSS/style.css" />
-    </head>
+        <title>Джерела</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom, #304A29, #668751);
+            color: #F8F9ED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .logo img {
+            align-items: center;
+            width: 350px;
+            height: 350px;
+            padding-bottom: 20px;
+        }
+
+        .intro-title {
+            margin-top: 20px;
+            max-width: 900px;
+            text-align: center;
+            font-size: 70px;
+            color: #F8F9ED;
+        }
+
+        .buttons-wrap {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 1000px; /* фіксована ширина для симетрії */
+            margin-bottom: 150px;
+        }
+
+        .buttons-wrap a {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+
+        .buttons-wrap a:hover {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba(26, 34, 51, 0.75);
+            padding: 20px 16px; /* вертикальні/горизонтальні відступи */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #F8F9ED;
+            text-align: center;
+        }
+
+        .footer-logo,
+        .footer-social-medias,
+        .footer-info-code {
+            width: 30%;
+        }
+        
+        .footer h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #F8F9ED;
+        }
+        .footer a {
+            color: #F8F9ED;
+            text-decoration: none;
+            text-underline-offset: 3px;
+        }
+        .footer a:hover {
+            opacity: 0.5;
+        }
+        .footer-logo img {
+            max-width: 180px;
+        }
+        .footer-logo img:active {
+        transform: scale(0.9) rotate(-2deg);
+        }
+
+        @media (max-width: 768px) {
+            .buttons-wrap {
+                grid-template-columns: 1fr;
+                width: 90%;
+                margin: 10 auto 60px;
+            }
+            .intro-title {
+                max-width: 80%;
+                text-align: center;
+                font-size: 48px;
+                color: #F8F9ED;
+            }
+
+            .footer {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
     <body>
-        <!-- Header start -->
-        <header class="header">
-            <div class="wrapper">
-                <div class="header___wrapper2">
-                    <div class="header___logo">
-                        <a href="index.html" class="header___logo-link">
-                            <img
-                                src="./img/svg/odigo-logo.svg"
-                                alt="ЕкоЛань"
-                                class="header___logo-pic"
-                            />
-                        </a>
-                    </div>
-                </div>
-                <nav class="header___nav">
-                    <ul class="header___list2">
-                        <li class="header___item">
-                            <a href="index.html" class="header___link"
-                                >Головна сторінка</a
-                            >
-                        </li>
-                         <li class="header___item">
-                            <a href="test.html" class="header___link">Тест</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!-- Header end -->
+        <!-- Контейнер для particles.js -->
+        <div
+            id="particles-js"
+            style="
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            "
+        ></div>
+
+        <!-- Головний блок -->
         <main class="main">
-            <!-- Intro start -->
+            <!-- Логотип -->
+            <div class="logo">
+                <img src="./img/svg/logo-new.svg" alt="Logo" />
+            </div>
 
-            <section class="intro2">
-                <div class="wrapper"></div>
-            </section>
-            <!-- Intro end -->
-
-            <!-- Benefits start -->
-            <section class="benefits">
-                <div class="benefits___wrap2">
-                    <div class="wrapper-table">
-                        <h1 class="section-title">Приклади використання</h1>
-                        <div class="wrapper-full">
-                            <table class="tab">
-                                <tr>
-                                    <th>Позначення</th>
-                                    <th>Полімер</th>
-                                    <th>Приклади використання</th>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♳</td>
-                                    <td>PET (Поліетилентерефталат)</td>
-                                    <td>
-                                        Пляшки для води, соків, упаковки для їжі 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♴</td>
-                                    <td>HDPE (Поліетилен високої щільності)</td>
-                                    <td>Пляшки для молока, шампунів, мішки для сміття</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♵</td>
-                                    <td>PVC (Полівінілхлорид)</td>
-                                    <td>
-                                        Труби, віконні рами, підлогові покриття
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♶</td>
-                                    <td>LDPE (Поліетилен низької щільності)</td>
-                                    <td>Поліетиленові пакети, плівки, упаковки для їжі</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♷</td>
-                                    <td>PP (Поліпропілен)</td>
-                                    <td>Контейнери для їжі, кришки для пляшок, стаканчики</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♸</td>
-                                    <td>PS (Полістирол)</td>
-                                    <td>Одноразовий посуд, лотки для їжі, пакування техніки</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♹</td>
-                                    <td>Other (Інші види пластику)</td>
-                                    <td>Полікарбонатні пляшки, біопластики</td>
-                                </tr>
-                            </table>
-                            <h1 class="section-title">
-                                Роки розкладу пластику
-                            </h1>
-                            <table class="tab">
-                                <tr>
-                                     <th>Позначення</th>
-                                    <th>Види пластику</th>
-                                    <th>Тривалiсть розкладання</th>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♳</td>
-                                    <td>Поліетилен терефталат, PET або ПЕТ</td>
-                                    <td>Потрібно 450 років</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♴</td>
-                                    <td>
-                                        Поліетилен високої щільності, PEHD
-                                        (HDPE)
-                                    </td>
-                                    <td>Потрібно від 100 до 500 років</td>
-                                </tr>
-                                <tr>
-                                     <td class="pl-text">♵</td>
-                                    <td>Полівінілхлорид, PVC або ПВХ</td>
-                                    <td>Потрібно від 500 до 1 000 років</td>
-                                </tr>
-                                <tr>
-                                     <td class="pl-text">♶</td>
-                                    <td>
-                                        Поліетилен низької щільності, PELD
-                                        (LDPE)
-                                    </td>
-                                    <td>Потрібно від 50 до 500 років</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♷</td>
-                                    <td>Поліпропілен, PP або ПП</td>
-                                    <td>Потрібно від 200-500 років</td>
-                                </tr>
-                                <tr>
-                                     <td class="pl-text">♸</td>
-                                    <td>Полістирол, PS або ПС</td>
-                                    <td>Потрібно до 500 років</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-text">♹</td>
-                                    <td>Інше або оther</td>
-                                    <td>Потрібно 500+ років</td>
-                                </tr>
-                            </table>
-                           <h1 class="section-title">Зроби з пластику...</h1>
-                        <div class="wrapper-full">
-                            <table>
-                                <tr>
-                                    <th>Скільки пластику потрібно</th>
-                                    <th>Що можна зробити</th>
-                                </tr>
-                                <tr>
-                                    <td>0.8 кг</td>
-                                    <td>Котушка пластику для 3D прінтера</td>
-                                </tr>
-                                <tr>
-                                    <td>1 кг</td>
-                                    <td>Протез руки</td>
-                                </tr>
-                                <tr>
-                                    <td>2 кг</td>
-                                    <td>Протез ноги</td>
-                                </tr>
-                                <tr>
-                                    <td>0.02 кг</td>
-                                    <td>Протез зубів (один зуб)</td>
-                                </tr>
-                                <tr>
-                                    <td>0.5 кг</td>
-                                    <td>
-                                        Горщик для квітки (діаметром 15-20 см)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0.15 кг</td>
-                                    <td>Кружка (об'ємом 250-300 мл)</td>
-                                </tr>
-                                <tr>
-                                    <td>0.03 кг</td>
-                                    <td>Ложка столова</td>
-                                </tr>
-                                <tr>
-                                    <td>0.035 кг</td>
-                                    <td>Веделка</td>
-                                </tr>
-                                <tr>
-                                    <td>0.15 кг</td>
-                                    <td>Тарілка (діаметром 25-30 см)</td>
-                                </tr>
-                            </table>
-                        </div>
-                        </div>
-                    </div>
+            <!-- Коротке пояснення -->
+            <h1 class="intro-title">
+                Джерела, або "звідки я брала інфу?"
+            </h1>
+            <h3>Про Пластик можете почитати тут:</h3>
+            <a href="https://phc.org.ua/" class="tooltip image-link">
+                <p>
+                    Центр громадського здоров'я МОЗ України.
+                </p>
+            </a>
+            <a href="https://pubs.rsc.org/en/content/articlehtml/2025/ra/d5ra05845g" class="tooltip image-link">
+                <p>
+                    RSC Publishing.
+                </p>
+            </a>
+            <a href="https://www.sciencedirect.com/" class="tooltip image-link">
+                <p>
+                    ScienceDirect.
+                </p>
+            </a>
+            <a href="https://www.plasticsindustry.org/" class="tooltip image-link">
+                <p>
+                    Plastics Industry.
+                </p>
+            </a>
+            <a href="https://www.britannica.com/" class="tooltip image-link">
+                <p>
+                    Britannica.
+                </p>
+            </a>
+            <a href="https://www.rsc.org/" class="tooltip image-link">
+                <p>
+                    ROYAL SOCIETY OF CHEMISTRY.
+                </p>
+            </a>
+            <a href="https://www.iea.org/" class="tooltip image-link">
+                <p>
+                    iea.org.
+                </p>
+            </a>
+            <h3>Зображення взяті з:</h3>
+            <a href="https://www.pexels.com/uk-ua/" class="tooltip image-link">
+                <p>
+                    Pexels.
+                </p>
+            </a>
+            <a href="https://male.kozak.cx.ua/yaki-tvarini-idyat-plastik.html" class="tooltip image-link">
+                <p>
+                    male.kozak.cx.ua
+                </p>
+            </a>
+            <a href="https://ecolog-ua.com/news/plastyk-stav-prychynoyu-masovoyi-zagybeli-chayok-v-latviyi" class="tooltip image-link">
+                <p>
+                    ECOBUSINESS
+                </p>
+            </a>
+            <!-- Кнопки -->
+            <div class="buttons-wrap">
+                <a href="./index.html" class="shift-button">На головну</a>
+            </div>
+            <div class="footer">
+                <div class="footer-info-code">
+                    <h1>Джерела:</h1>
+                    <p>---</p>
+                    <h1>Запозичений код</h1>
+                    <p>
+                        Партікли взяті з:
+                        <a href="https://vincentgarreau.com/particles.js/">particles.js</a>
+                    </p>
                 </div>
-            </section>
-            <!-- Benefits end -->
+                <div class="footer-logo">
+                    <img onclick="RandomMashineSound()" src="./img/svg/mashine-ultrakill.svg" alt="UltraKill"/>
+                    <p>© 2025 EcoLan. Всі права захищені.</p>
+                </div>
+                <div class="footer-social-medias">
+                    <a href="https://www.instagram.com/web_goblin_/">Інстаграм: web_goblin_</a>
+                    <p>Gmail: </p>
+                </div>
+            </div>
         </main>
-        <script src="./js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     </body>
+    <script>
+        sounds = [
+            "./Звуки-MP3-для-проекту/1.mp3",
+            "./Звуки-MP3-для-проекту/2.mp3",
+            "./Звуки-MP3-для-проекту/3.mp3",
+            "./Звуки-MP3-для-проекту/4.mp3",
+            "./Звуки-MP3-для-проекту/5.mp3",
+            "./Звуки-MP3-для-проекту/6.mp3"
+        ];
+        function RandomMashineSound(){
+            randomIndex = Math.floor(Math.random() * sounds.length);
+            audio = new Audio(sounds[randomIndex]);
+            audio.volume = 0.8;
+            audio.play();
+        };
+        
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 60,
+                    density: { enable: true, value_area: 800 },
+                },
+                color: { value: "#ffffff" },
+                shape: {
+                    type: "circle",
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 140,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
 </html>
