@@ -451,9 +451,23 @@
             transform: translateY(-4px);
             color: #4C643B;
         }
-            .chemistry {
-                text-align: center;
-            }
+        .chemistry {
+            text-align: center;
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            height: 125px;
+            Border-radius: 15px;
+            background-color: #8FA87A;
+        }
+        #input, 
+        #result{
+            width: 25%;
+            height: 40px;
+            border-radius: 5px;
+        }
 /*Адаптація під телефон*/
         
         @media (max-width: 768px) {
@@ -1108,15 +1122,13 @@
                             placeholder="Введіть число"
                             oninput="calculate()"
                         >
+                        <img src="./img/svg/plastic7.svg" class="calculate-img"/>
                         <input
                             type="text"
                             id="result"
                             placeholder="Результат"
                             disabled
                         >
-                        <div class="hint">
-                            Число автоматично множиться
-                        </div>
                     </div>
             </div>
             <!-- Кнопки -->
