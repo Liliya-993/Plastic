@@ -967,7 +967,7 @@
                     </p>
                 </div>
                 <div class="footer-logo">
-                    <img onclick="RandomMashineSound()" src="./img/svg/v2.svg" alt="UltraKill"/>
+                    <img onclick="RandomAngelSound()" src="./img/svg/Gab.svg" alt="UltraKill"/>
                     <p>© 2025 EcoLan. Всі права захищені.</p>
                 </div>
                 <div class="footer-social-medias">
@@ -1008,14 +1008,15 @@
         });
         
         sounds = [
-            "./Звуки-MP3-для-проекту/1.mp3",
-            "./Звуки-MP3-для-проекту/2.mp3",
-            "./Звуки-MP3-для-проекту/3.mp3",
-            "./Звуки-MP3-для-проекту/4.mp3",
-            "./Звуки-MP3-для-проекту/5.mp3",
-            "./Звуки-MP3-для-проекту/6.mp3"
+            "./Звуки-MP3-для-проекту/Gab1.mp3",
+            "./Звуки-MP3-для-проекту/Gab2.mp3",
+            "./Звуки-MP3-для-проекту/Gab3.mp3",
+            "./Звуки-MP3-для-проекту/Gab4.mp3",
+            "./Звуки-MP3-для-проекту/Gab5.mp3",
+            "./Звуки-MP3-для-проекту/Gab6.mp3"
+            "./Звуки-MP3-для-проекту/Gab7.mp3"
         ];
-        function RandomMashineSound(){
+        function RandomAngelSound(){
             randomIndex = Math.floor(Math.random() * sounds.length);
             audio = new Audio(sounds[randomIndex]);
             audio.volume = 0.8;
