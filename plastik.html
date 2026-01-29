@@ -1101,38 +1101,23 @@
                         </tr>
                     </table>
                 <h3 class="section-title">Перетворимо кришечки на щось корисне!</h3>
-                    <form class="search-form">
-                        <fieldset class="search-form___wrap">
-                            <p>
-                                Для однієї пластикової пляшки 0,75 л, без етикетки, але з кришкою, можна отримати приблизно 20 грамів пластику, придатного для 3D-друку.
-                                Це усереднене й реалістичне значення для PET-пляшки стандартної товщини і поліпропіленової кришки.</p>
-                            <p class="search-form___info">
-                                <input
-                                    type="number"
-                                    id="inputValue"
-                                    name="user-like-to-do"
-                                    class="search-form___field"
-                                    placeholder="Кількість пляшок: "
-                                />
-                            </p>
-
-                            <div class="search-form___info">
-                                <!-- Поле для виводу результату -->
-                                <label for="resultField"></label>
-                                <p id="resultField" class="search-form___field2">
-                                    Тут з'явиться маса пластику в кг
-                                </p>
-                            </div>
-
-                            <button
-                                type="button"
-                                class="search-form___button"
-                                onclick="calculate()"
-                            >
-                                Обчислити
-                            </button>
-                        </fieldset>
-                    </form>
+                    <div class="box">
+                        <input
+                            type="number"
+                            id="input"
+                            placeholder="Введіть число"
+                            oninput="calculate()"
+                        >
+                        <input
+                            type="text"
+                            id="result"
+                            placeholder="Результат"
+                            disabled
+                        >
+                        <div class="hint">
+                            Число автоматично множиться
+                        </div>
+                    </div>
             </div>
             <!-- Кнопки -->
             <div class="buttons-wrap">
@@ -1265,14 +1250,18 @@
             retina_detect: true,
         });
 
+        const multiplier = 0.02; // число, яке користувач не обирає
+
         function calculate() {
-            const value = document.getElementById("inputValue").value;
-            if (isNaN(value) || value === "") {
-                document.getElementById("resultField").innerText = "Некоректне число";
+            let value = document.getElementById("input").value;
+            let resultField = document.getElementById("result");
+    
+            if (value === "") {
+                resultField.value = "";
                 return;
             }
-              x = document.getElementById("inputValue").value*0.02;
-              document.getElementById("resultField").innerText = "Кількість пластику: "+x+" кг";
+    
+            resultField.value = Number(value) * multiplier;
         }
     </script>
 </html>
