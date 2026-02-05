@@ -186,6 +186,8 @@
         
         .plastic-card-pic {
             width: 70px;
+            display: block;
+            margin: 0 auto;
         }
         
         .swiper-button-prev::after,
@@ -194,11 +196,11 @@
         }
         
         .swiper-pagination-bullet {
-            background: #8FA87A;
+            background: #4C643B;
         }
         
         .swiper-pagination-bullet-active {
-            background: #4C643B;
+            background: #8FA87A;
         }
 
         table {
