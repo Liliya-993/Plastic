@@ -193,6 +193,9 @@
         
         .plastic-card-pic {
             width: 70px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         
         .swiper-button-prev::after,
@@ -200,7 +203,7 @@
             color: #4C643B;
         }
         
-        .swiper-pagination-bullet-active {
+        .swiper-pagination {
             background: #4C643B;
         }
 
