@@ -178,24 +178,14 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            justify-content: center;
             box-sizing: border-box; /* дуже важливо, щоб padding не “ріс” за межі */
             padding: 30px;
             margin: 0 auto; /* центр слайда в контейнері */
         }
         
-        .swiper-slide {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
         .plastic-card-pic {
             width: 70px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
         }
         
         .swiper-button-prev::after,
@@ -203,7 +193,11 @@
             color: #4C643B;
         }
         
-        .swiper-pagination {
+        .swiper-pagination-bullet {
+            background: #8FA87A;
+        }
+        
+        .swiper-pagination-bullet-active {
             background: #4C643B;
         }
 
@@ -554,4 +548,3 @@
                 height: 3px;
             }
         }
-    </style>
