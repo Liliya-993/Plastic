@@ -32,16 +32,42 @@
                         viewBox="0 0 70 70"
                         onclick="scrollToTop(event)"
                     >
-                        <circle
-                            cx="35"
-                            cy="35"
-                            r="33"
+                        <rect
+                            x="2"
+                            y="2"
+                            width="66"
+                            height="66"
+                            rx="15"
+                            ry="15"
                             fill="none"
                             stroke="#F8F9ED"
                             stroke-width="3"
                         />
                         <path
                             d="M 35 20 L 25 32 L 30 32 L 30 48 L 40 48 L 40 32 L 45 32 Z"
+                            fill="#F8F9ED"
+                        />
+                    </svg>
+                </a>
+            <a href="#bottom">
+                    <svg
+                        class="Up-to-bottom"
+                        viewBox="0 0 70 70"
+                        onclick="scrollToBottom(event)"
+                    >
+                         <rect
+                            x="2"
+                            y="2"
+                            width="66"
+                            height="66"
+                            rx="15"
+                            ry="15"
+                            fill="none"
+                            stroke="#F8F9ED"
+                            stroke-width="3"
+                        />
+                        <path
+                            d="M 35 50 L 25 38 L 30 38 L 30 22 L 40 22 L 40 38 L 45 38 Z"
                             fill="#F8F9ED"
                         />
                     </svg>
@@ -399,6 +425,10 @@
         function scrollToTop(event) {
                 event.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        function scrollToBottom(event) {
+                event.preventDefault();
+                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
             }
         
         function toggleMenu() {
