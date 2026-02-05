@@ -42,7 +42,7 @@
             width: 150px;
             height: 150px;
             padding-bottom: 20px;
-            position: absolute;
+            position: fixed;
             left: 30px;
             top: 30px;
         }
