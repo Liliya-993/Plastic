@@ -1,0 +1,554 @@
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom, #304A29, #668751);
+            color: #F8F9ED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .white-bg {
+            background-color: #F8F9ED;
+            width: 65%;
+            justify-content: flex-start;
+            padding: 30px 30px 50px 30px;
+            border-radius: 15px;
+            color:#4C643B;
+            margin-top: 300px;
+
+            /*display: flex;
+            flex-direction: column;
+            align-items: center;*/
+        }
+
+        .white-bg p {
+            padding: 5px 40px 5px 30px;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 150px;
+            padding-bottom: 20px;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+        }
+        
+        .title img {
+            padding-bottom: 200px;
+            position: absolute;
+            top: 30px;
+            right: 15%;
+        }
+        
+        .intro-title {
+            font-weight: 900;
+            margin-top: 20px;
+            max-width: 1500px;
+            text-align: center;
+            font-size: 100px;
+            color: #F8F9ED;
+        }
+        
+        .buttons-wrap {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 1000px; /* фіксована ширина для симетрії */
+            margin-bottom: 150px;
+        }
+
+        .buttons-wrap a {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+
+        .buttons-wrap a:hover {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+
+        .footer {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba(26, 34, 51, 0.75);
+            padding: 20px 16px; /* вертикальні/горизонтальні відступи */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #F8F9ED;
+            text-align: center;
+        }
+
+        .footer-logo,
+        .footer-social-medias,
+        .footer-info-code {
+            width: 30%;
+        }
+        
+        .footer h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #F8F9ED;
+        }
+        
+        .footer a {
+            color: #F8F9ED;
+            text-decoration: none;
+            text-underline-offset: 3px;
+        }
+        
+        .footer a:hover {
+            opacity: 0.5;
+        }
+        
+        .footer-logo img {
+            max-width: 180px;
+        }
+        
+        .footer-logo img:active {
+            transform: scale(0.9) rotate(-2deg);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 500px;
+            background-color: #304A29;
+            color: #F8F9ED;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        
+            /* Позиціонування підказки */
+            position: absolute;
+            z-index: 999;
+            bottom: 102%; /* Відступ зверху */
+            /* Анімаційний ефект */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 350px;
+        }
+        
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box; /* дуже важливо, щоб padding не “ріс” за межі */
+            padding: 30px;
+            margin: 0 auto; /* центр слайда в контейнері */
+        }
+        
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .plastic-card-pic {
+            width: 70px;
+        }
+        
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            color: #4C643B;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #4C643B;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto; /* центр таблиці по горизонталі */
+            font-size: 15px;
+            line-height: 22px;
+            font-weight: bold;
+            border-collapse: collapse;  /*щоб border-radius та межі виглядали нормально */
+            text-align: center; /* текст по центру для всіх комірок */
+        }
+
+        th {
+            background-color: #D8CFA5;
+            color: #976B31;
+            text-align: left; /* залишаємо текст th зліва */
+            padding: 10px;
+            border: 3px solid #C2A85D;
+        }
+        
+        td {
+            padding: 10px;
+            text-align: center; /* центр для td */
+            border: 3px solid #C2A85D;
+        }
+        
+        tr:hover {
+            background-color: #D8CFA5;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 35px;
+            line-height: 42px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .section-title::after {
+            display: block;
+            content: "";
+            width: 353px;
+            height: 3px;
+            background-color: #8FA87A;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 28px;
+            margin-bottom: 15px;
+        }
+
+        .plastic-card-title {
+            width: 100%;
+            font-weight: 420px;
+            font-size: 25px;
+            line-height: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: #F8F9ED;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -260px;
+            width: 260px;
+            height: 100vh;
+            background-color: #1A2233;
+            padding-top: 80px;
+        
+            transition: right 0.4s ease-in-out; 
+            z-index: 1000;
+        }
+        
+        .side-nav.open {
+            right: 0;
+        }
+        
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .side-nav li {
+            margin: 10px 0;
+        }
+        
+        .side-nav a {
+            display: block;
+            padding: 12px 20px;
+            color: #F8F9ED;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .side-nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .warning {
+            border: 2px solid red;
+            border-radius: 5px;
+            max-width: 75%;
+            margin:auto;
+        }
+
+        .Up-to-top {
+            position: fixed;
+            width: 80px;
+            bottom: 30px;
+            left: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .Up-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        h3 {
+            padding-left: 30px;
+            font-size: 23px;
+        }
+        .illustration-wrap {
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 40px;
+            cursor: pointer;
+            
+           /* display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }*/
+        .illustration {
+            /*grid-column: span 1/2;
+            max-width: 700px;*/
+            width: 600px;
+        }
+        .double-illustration-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+        .video-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        .video {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 15px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-form___wrap {
+            max-width: 600px;
+            width: 100%;
+            padding: 24px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Обгортка input / result */
+        .search-form___info {
+            margin-bottom: 16px;
+        }
+        
+        /* Input */
+        .search-form___field {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background-color: #f8f9ed;
+            color: #2c3e2f;
+        }
+        
+        /* Результат */
+        .search-form___field2 {
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(102, 135, 81, 0.25);
+            color: #f8f9ed;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* Кнопка */
+        .search-form___button {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #F8F9ED;
+            background-color: #4C643B;
+            padding: 15px;
+            border-radius: 15px; /* заокруглені кути */
+            font-size: 20px;
+            font-weight: 600;
+            height: 100px;
+            transition: transform 0.5s ease;
+            text-decoration: none;
+        }
+        
+        .search-form___button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+        
+        .search-form___button:active {
+            background-color: #F8F9ED;
+            transform: translateY(-4px);
+            color: #4C643B;
+        }
+        .chemistry {
+            text-align: center;
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            height: 125px;
+            border-radius: 15px;
+            background-color: #8FA87A;
+
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        #input, 
+        #result{
+            width: 25%;
+            height: 40px;
+            border-radius: 5px;
+        }
+/*Адаптація під телефон*/
+        
+        @media (max-width: 768px) {
+            .white-bg {
+                width: 80%;
+                padding: 20px;
+                margin-top: 50%;
+            }
+            
+            .swiper {
+                height: auto;
+            }
+        
+            .swiper-slide {
+                padding: 20px 10px;
+            }
+        
+            /* ---------- TABLE ---------- */
+            table {
+                width: 100%;
+                font-size: 13px;
+            }
+        
+            th, td {
+                padding: 6px;
+            }
+        
+            /* ---------- SIDE MENU ---------- */
+            .menu-toggle {
+                top: 25px;
+                right: 25px;
+            }
+            
+            .side-nav {
+                width: 80%;
+                transform: translateX(100%);
+                right: 0;
+                transition: transform 0.35s ease-in-out;
+            }
+        
+            .side-nav.open {
+                transform: translateX(0);
+            }
+        
+            /* ---------- TOOLTIP ---------- */
+            .tooltip .tooltip-text {
+                width: 220px;
+                font-size: 13px;
+            }
+        
+            /* ---------- UP BUTTON ---------- */
+            .Up-to-top {
+                width: 60px;
+                bottom: 20px;
+                left: 20px;
+                background-color: #1A2233;
+                border-radius: 50%;
+            }
+        
+            h3 {
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .buttons-wrap {
+                grid-template-columns: 1fr;
+                width: 90%;
+                margin: 10 auto 60px;
+            }
+
+            .logo img {
+                width: 60%;
+                height: 60%;
+                left: 50%;
+                top: 30px;
+            }
+
+            .title img {
+                padding-bottom: 5%;
+                position: absolute;
+                width: 80%;
+                right: 10%;
+                margin-top: 50%;
+            }
+
+            .section-title::after {
+                width: 150px;
+                height: 3px;
+            }
+        }
+    </style>
