@@ -330,7 +330,6 @@
         }
 
         .Up-to-bottom {
-            transform: rotate(180deg);
             position: fixed;
             width: 80px;
             bottom: 60px;
