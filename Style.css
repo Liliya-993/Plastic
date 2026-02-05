@@ -318,7 +318,7 @@
         .Up-to-top {
             position: fixed;
             width: 80px;
-            bottom: 120px;
+            bottom: 90px;
             left: 30px;
             cursor: pointer;
             transition: transform 0.3s;
