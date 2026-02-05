@@ -196,11 +196,7 @@
         }
         
         .swiper-pagination-bullet {
-            color: #668751;
-        }
-        
-        .swiper-pagination-bullet-active {
-            background: #4C643B;
+            color: #4C643B;
         }
 
         table {
